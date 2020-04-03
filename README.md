@@ -43,7 +43,7 @@ Things you may want to cover:
 |recimage|text|null: false|
 |required_number|integer|null: false|
 |time|integer|null: false|
-|user_id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -56,8 +56,8 @@ Things you may want to cover:
 # bookmarksテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
-|recreation_id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|recreation_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -68,7 +68,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
-|recreation_id|integer|null: false|
+|recreation_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :recreation
@@ -78,7 +78,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |url|text|null: false|
-|recreation_id|integer|null: false|
+|recreation_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :recreation
