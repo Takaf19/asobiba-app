@@ -25,6 +25,6 @@ test:
 
 production:
   <<: *default
-  database: asobiba_production
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
