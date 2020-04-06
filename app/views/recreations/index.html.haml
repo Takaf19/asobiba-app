@@ -1,8 +1,12 @@
 .user
-  - if @user.user_image.file.nil?
-    =image_tag "NoImage.png", size:100
+  - if user_signed_in?
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - if @user.user_image.file.nil?
+      =image_tag "NoImage.png", size:100
+    - else
+      =image_tag @user.user_image.url, size:100
   - else
-    =image_tag @user.user_image.url, size:100
+    = link_to "ログイン", user_session_path
 
 .form
   = form_with(model:@image, local: true) do |f|
