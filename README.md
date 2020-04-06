@@ -77,7 +77,8 @@ Things you may want to cover:
 # imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|url|text|null: false|
+|imgurl|text|null: false|
+|imgtype|string|null: false|
 |recreation_id|integer|null: false, foreign_key: true|
 
 ### Association
