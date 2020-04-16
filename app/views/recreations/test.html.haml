@@ -1,0 +1,77 @@
+#test
+  テスト
+#hello
+  %h1 Page
+  %p {{ message }}
+
+.user
+  - if user_signed_in?
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - if @user.user_image.file.nil?
+      =image_tag "NoImage.png", size:100
+    - else
+      =image_tag @user.user_image.url, size:100
+  - else
+    = link_to "ログイン", user_session_path
+
+.form
+  = form_with(model:@image, local: true) do |f|
+    .form__mask
+      = f.label :imgurl, class: 'form__mask__image' do
+        = icon('fas', 'image', class: 'icon')
+        = f.file_field :imgurl, class: 'hidden'
+    = f.submit 'Send', class: 'form__submit'
+
+.image
+  -if @images.present?
+    -@images.each do |img|
+      - if img.imgtype == "image"
+        = image_tag img.imgurl.url, size: "400x400"
+      - else
+        = video_tag img.imgurl.url, size: "400x400", controls: true, autobuffer: true  
+  - else
+    画像がありません
+%br
+
+.rec
+  = form_with(model:@recreation, local: true) do |form|
+    .field
+      = form.label :recname, '名前'
+      = form.text_field :recname
+      %br
+      = form.label :recimage, '画像'
+      = form.file_field :recimage
+      %br
+      = form.label :required_number, '必要人数'
+      = form.text_field :required_number
+      %br
+      = form.label :time, '必要時間'
+      = form.text_field :time
+      %br
+      %br
+    #textForm
+      = form.fields_for :explanations do |text_form|
+        .js-file_group{id: "#{text_form.index}"}
+          = text_form.text_field :text, class: 'js-file'
+          #js-add 追加
+    = form.submit
+%br
+#reclist
+  - i = 0
+  - @recreations.each do |rec|
+    .rec-title{"v-on:click": "setRecInfo(#{rec.id})"}
+      = rec.recname
+
+
+  .row{'v-show': 'recInfoBool'}
+    .recContent
+      .title
+        {{ recInfo.recname }}
+      -# .detail
+      -#   = image_tag {{ recInfo.recimage }}
+      .detail
+        {{ recInfo.required_number }}
+      .detail
+        {{ recInfo.time }}
+
+= javascript_pack_tag 'recreation'

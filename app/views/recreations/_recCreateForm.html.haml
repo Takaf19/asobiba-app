@@ -1,0 +1,57 @@
+#recCreate
+  .title 
+    あそび情報の入力
+    = icon("fas","pencil-alt")
+  = form_with(model:@recreation, local: true) do |form|
+    .field
+      .field--label
+        = form.label :recimage, 'タイトル画像', clas:"reclabel"
+        %span.require  必須
+      = form.label :recimage do
+        .imageBox
+          = icon('fas', 'image', class: 'icon')
+          %img.file-preview
+          -# %img.file-preview{src:"assets/NoImage.png"}
+          = form.file_field :recimage, class:"filebox",  required: true, onchange:"selectImage(this)"
+
+    .field
+      .field--label
+        = form.label :recname, 'あそび名', clas:"reclabel"
+        %span.require  必須
+      = form.text_field :recname, class:"textbox titlebox",placeholder:"20文字まで" , required: true, MaxLength: 20
+
+    .field
+      .field--label
+        = form.label :recComment, 'コメント', clas:"reclabel"
+        %span.require  必須
+      = form.text_area :recComment, class:"textareabox  commentbox", placeholder:"200文字まで", required: true, MaxLength: 200
+
+    .field
+      .field--label.selectBox
+        = form.label :requirednumber_id, '必要人数', clas:"reclabel"
+        %span.require  必須
+        %br
+        = form.collection_select :requirednumber_id, Requirednumber.all, :id, :name, required: true
+    
+    .field
+      .field--label
+        = form.label :rectime_id, '必要時間', clas:"reclabel"
+        %span.require  必須
+        %br
+        = form.collection_select :rectime_id, Rectime.all, :id, :item, required: true
+
+    .field#textForm
+      .field--label
+        = form.label :rectime_id, 'あそび方説明', clas:"reclabel"
+        %span.require  必須
+        %p 最大５つまで追加可能です。
+      = form.fields_for :explanations do |text_form|
+        .js-file_group{id: "#{text_form.index}"}
+          = text_form.text_area :recText, class: 'textareabox', placeholder:"200文字まで", required: true, MaxLength: 200
+          .js-file_group--btn
+            .recbtn#js-add{onclick:"btnClick()"}+
+
+    .recFormBtn
+      = form.submit "登録する", class:"submit"
+    .recFormBtn
+      = link_to  "戻る", root_path, class:"back"
