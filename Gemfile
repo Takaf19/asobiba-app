@@ -73,3 +73,6 @@ gem 'mini_magick'
 gem 'pry-rails'
 gem "font-awesome-sass"
 gem 'fog-aws'
+gem 'webpacker'
+gem 'jquery-rails'
+gem 'active_hash'
