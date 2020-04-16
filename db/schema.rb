@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_132925) do
+ActiveRecord::Schema.define(version: 2020_04_13_091232) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_132925) do
   end
 
   create_table "explanations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "text", null: false
+    t.text "recText", null: false
     t.bigint "recreation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -42,8 +42,9 @@ ActiveRecord::Schema.define(version: 2020_04_03_132925) do
   create_table "recreations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "recname", null: false
     t.text "recimage", null: false
-    t.integer "required_number", null: false
-    t.integer "time", null: false
+    t.text "recComment", null: false
+    t.integer "rectime_id", null: false
+    t.integer "requirednumber_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
