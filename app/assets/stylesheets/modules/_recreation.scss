@@ -7,20 +7,20 @@ html, body{
 }
 
 .hedder {
-  padding: 10px;
-  height: 80px;
+  padding: 10px 30px;
+  height: $hedder-height;
   position: fixed;
     left: 0;
     right: 0;
   z-index: 999;
   background-color: #F0FFFF;
-  box-shadow: 0 5px silver;
+  box-shadow: 0 3px silver;
   display: flex;
   justify-content: space-between;
   & .userName {
     color: dimgrey;
-    line-height: 80px;
-    font-size: 1.5em;
+    line-height: $hedder-height;
+    font-size: 1.2em;
   }
   &__item {
     &--icons {
@@ -28,15 +28,15 @@ html, body{
       justify-content: space-between;
       text-align: center;
       & .hedderBtn {
-        padding: 5px;
+        padding: 3px;
         white-space: nowrap;
-        margin-right: 10px;
+        margin-left: 20px;
         text-decoration: none;
         color: #6666FF;
         transition-duration: 0.4s;
-        border:dashed 4px #CCCCFF;
+        border:dashed 3px #CCCCFF;
         & i {
-          font-size: 2.3em;
+          font-size: 1.5em;
         }
         & p {
           font-size: 0.5em;
@@ -44,22 +44,18 @@ html, body{
         &:hover {
           background-color: #CCFFFF;
         }
-        &:hover > .fa-lightbulb {
-          color: yellow;
-          text-shadow: 1px 1px black;
-        }
       }
     }
   }
 }
 
 #app {
-  padding-top: 120px;
+  padding-top: $app-padding;
 }
 
 #mainContents {
-  width: 80%;
-  min-width: 600px;
+  width: 50%;
+  min-width: 450px;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 10px 50px;
@@ -87,7 +83,7 @@ html, body{
       left: 0;
       right: 0;
       margin: auto;
-    font-size: 1.5em;
+    font-size: 1.1em;
     text-shadow: 1px 1px gray;
     color: white;
   }
@@ -96,18 +92,18 @@ html, body{
 #recTabs {
   display: flex;
   width: 100%;
-  margin: 50px 0 10px ;
-  border-bottom: 4px solid cadetblue;
+  margin: 50px 0 0px ;
+  border-bottom: $topTabsBorder;
   & .tab {
     text-align: center;
     padding: 5px 0;
-    width: calc(100% / 3);
-    margin: 0 5px;
+    width: calc(100% / 2);
+    margin: 0 10px;
     cursor: pointer;
-    border-top: 4px solid cadetblue;
-    border-left: 4px solid cadetblue;
-    border-right: 4px solid cadetblue;
-    font-size: 22px;
+    border-top: $topTabsBorder;
+    border-left: $topTabsBorder;
+    border-right: $topTabsBorder;
+    font-size: 1em;
     font-weight: bold;
     border-radius: 5px 5px 0 0;
     color: cadetblue;
@@ -125,20 +121,21 @@ html, body{
 }
 
 #tabContents {
-  max-height: 700px;
+  max-height: 600px;
   overflow: scroll;
   padding: 10px;
-  border-bottom: 4px solid cadetblue;
+  border-bottom: $topTabsBorder;
 
 }
 
 .recContents {
   padding: 10px;
+  height: 200px;
   &__nothing {
-    height: 200px;
+    height: 120px;
     background-color: white;
     box-shadow: 0 0 5px 3px lightgray;
-    padding: 20px;
+    padding: 10px;
     & .text {
       height: 100%;
       width: 100%;
@@ -146,13 +143,13 @@ html, body{
       align-items: center;
       text-align: center;
       border: dashed 2px cadetblue;
-      font-size: 20px;
+      font-size: 1em;
       color: lightgray;
       &--item {
         margin: 0 auto;
         & > i {
-          font-size: 4em;
-          margin-bottom: 10px;
+          font-size: 3em;
+          margin-bottom: 5px;
         }
       }
     }
@@ -160,15 +157,18 @@ html, body{
   & a {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    max-height: 300px;
+    padding: 5px;
+    height: 120px;
     background-color: white;
     text-decoration: none;
     border: 1px solid darkgray;
     & .recImage {
-      width: 35%;
-      height: 180px;
-      padding: 5px;
+      width: 40%;
+      min-width: 150px;
+      max-width: 180px;
+      height: 95%;
+      margin-right: 5px;
+      padding: 2px;
       border-radius: 5px;
       background-color: darkcyan;
       border: 1px solid gray;
@@ -187,24 +187,32 @@ html, body{
         position: absolute;
           top: 10px;
           left: 10px;
-        font-size: 15px;
+        font-size: 0.8em;
         max-height: 100%;
         color: darkcyan;
         text-shadow: 1px 1px darkgray;
       }
     }
     & .recComment {
-      width: 60%;
+      width: 100%;
       margin-left: 10px;
       word-break: break-all;
       color: dimgray;
       &--title {
-        font-size: 22px;
+        font-size: 1em;
         text-shadow: 1px 1px darkgray;
-        margin-bottom: 10px;
       }
       &--text {
-        font-size: 18px;
+        font-size: 0.8em;
+      }
+      &--status {
+        font-size: 0.7em;
+        display: flex;
+        margin-right: 10%;
+        border-bottom: solid 1px darkcyan;
+        & > p {
+          margin-right: 10px;
+        }
       }
     }
   }
@@ -212,7 +220,7 @@ html, body{
 
 
 #footer-item {
-  height: 200px;
+  height: $footer-height;
   background: #009999;
-  box-shadow: 0 -5px silver;
+  box-shadow: 0 -3px silver;
 }

@@ -43,8 +43,8 @@
               <div class="recComment">
                 <div class="recComment--title">{{rec.recname}}</div>
                 <div class="recComment--status">
-                    必要人数:{{rec.requirednumber}}
-                    必要時間:{{rec.rectime}}
+                    <p>必要人数:{{rec.requirednumber}}</p>
+                    <p>必要時間:{{rec.rectime}}</p>
                 </div>
                 <div class="recComment--title"></div>
                 <div class="recComment--text">{{rec.recComment}}</div>

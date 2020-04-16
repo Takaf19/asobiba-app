@@ -1,40 +1,38 @@
 #recCreate {
-  min-height: calc(100vh - 200px);
   background-color: white;
-  padding: 20px 100px;;
+  padding: 20px 50px;
   text-align: center;
   box-shadow: 0 0 5px 3px lightgray;
   border-radius: 5px;
   & .title {
-    padding: 20px;
-    margin-bottom: 50px;
-    font-size: 1.8em;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 1.4em;
     font-weight: bold;
     color: cadetblue;
-    border-bottom: solid 4px cadetblue;
+    border-bottom: $topTabsBorder;
   }
   .field {
     width: 100%;
     display: inline-block;
     text-align: left;
-    margin: 20px 0;
+    margin: 10px 0;
+    font-size: 0.9em;
     & .textbox {
       padding: 5px;
-      width: 405px;
+      width: 300px;
       border: none;
-      font-size: 20px;
       border-radius: 3px;
-      box-shadow: 0 0 0 3px lightgray;
+      box-shadow: $boxShadow;
     }
     & .textareabox {
       resize: none;
       padding: 5px;
-      width:90%;
-      height:180px;
+      width:98%;
+      height:100px;
       border: none;
-      font-size: 20px;
       border-radius: 3px;
-      box-shadow: 0 0 0 3px lightgray;
+      box-shadow: $boxShadow;
     }
     .imageBox {
       width: calc(100% - 4px);
@@ -68,13 +66,13 @@
   }
   & .recFormBtn {
     display: inline-block;
-    margin: 20px auto;
+    margin: 10px auto;
     width: 100%;
     color: white;
     font-weight: bold;
     cursor: pointer;
-    font-size: 1.2em;
-    line-height: 70px;
+    font-size: 0.9em;
+    line-height: 50px;
   }
   .submit{
     background-color: cadetblue;
@@ -90,45 +88,44 @@
 
 .field--label {
   font-weight: bold;
-  font-size: 1.1em;
   color: rgb(39, 38, 38);
   margin-bottom: 5px;
+  font-size: 0.9em;
   > p {
     font-weight: 100;
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
   .require {
     text-align: center;
     display: inline-block;
     color: white;
     font-weight: 100;
-    font-size: 0.9em;
+    font-size: 0.8em;
     background-color: #FF0033;
     border-radius: 5px;
-    width: 40px;
+    width: 30px;
   }
   & select {
-    width: 120px;
-    height: 40px;
+    width: 100px;
+    height: 30px;
     font-weight: 100;
-    font-size: 1em;
     outline: none;
   }
 }
 
 .js-file_group--btn {
-  width: 91%;
-  font-size: 1.5em;  display: flex;
+  display: flex;
   justify-content: flex-end;
+  font-size: 1.2em;
   .recbtn {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
     margin: 5px;
     border-radius: 50%;
     text-align:center;
     font-weight: bold;
-    line-height: 35px;
+    line-height: 25px;
     color: white;
     box-shadow: 0 0 0 1px lightgray;
     &:hover {
