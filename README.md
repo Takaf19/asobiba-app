@@ -41,8 +41,9 @@ Things you may want to cover:
 |------|----|-------|
 |recname|string|null: false|
 |recimage|text|null: false|
-|required_number|integer|null: false|
-|time|integer|null: false|
+|recComment|text|null: false|
+|rectime_id|integer|null: false|
+|requiredNumber_id|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
@@ -52,6 +53,14 @@ Things you may want to cover:
 - has_many :bookmarks, dependent: :destroy
 - has_many :users, through: :bookmarks, source: :user_id
 
+# explanationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|recText|text|null: false|
+|recreation_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :recreation
 
 # bookmarksテーブル
 |Column|Type|Options|
@@ -61,16 +70,6 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- belongs_to :recreation
-
-
-# explanationsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|text|null: false|
-|recreation_id|integer|null: false, foreign_key: true|
-
-### Association
 - belongs_to :recreation
 
 

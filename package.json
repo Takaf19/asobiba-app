@@ -1,5 +1,21 @@
 {
   "name": "asobiba-app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@babel/preset-react": "^7.9.4",
+    "@rails/webpacker": "5.0.1",
+    "axios": "^0.19.2",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react_ujs": "^2.6.1",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.1",
+    "vue-router": "^3.1.6",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
 }

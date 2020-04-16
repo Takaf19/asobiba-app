@@ -7,5 +7,36 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+  
   %body
-    = yield
+    .hedder
+      = link_to root_path,class:"topHedder__logo" do
+        =image_tag "asobiba-logo.png", height:"80px"
+      - if user_signed_in?
+        .userName
+          = "ようこそ #{@user.nickname}さん"
+        .hedder__item
+          .hedder__item--icons
+            = link_to new_recreation_path, class:"hedderBtn", id:"recCreateBtn" do
+              = icon("fas", "lightbulb")
+              %p あそびを登録
+            = link_to destroy_user_session_path, class:"hedderBtn", method: :delete do
+              = icon("fas", "sign-out-alt")
+              %p ログアウト
+
+      -else
+        .hedder__item
+          .hedder__item--icons
+            = link_to new_user_registration_path, class:"hedderBtn" do
+              = icon("fas", "sign-in-alt")
+              %p 新規登録
+            = link_to user_session_path, class:"hedderBtn" do
+              = icon("far", "user-circle")
+              %p ログイン 
+
+    .animation
+      #app
+        = yield
+        %footer-item
+  
+    = javascript_pack_tag 'hello_vue'

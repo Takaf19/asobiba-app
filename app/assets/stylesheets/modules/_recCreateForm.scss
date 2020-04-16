@@ -1,0 +1,144 @@
+#recCreate {
+  min-height: calc(100vh - 200px);
+  background-color: white;
+  padding: 20px 100px;;
+  text-align: center;
+  box-shadow: 0 0 5px 3px lightgray;
+  border-radius: 5px;
+  & .title {
+    padding: 20px;
+    margin-bottom: 50px;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: cadetblue;
+    border-bottom: solid 4px cadetblue;
+  }
+  .field {
+    width: 100%;
+    display: inline-block;
+    text-align: left;
+    margin: 20px 0;
+    & .textbox {
+      padding: 5px;
+      width: 405px;
+      border: none;
+      font-size: 20px;
+      border-radius: 3px;
+      box-shadow: 0 0 0 3px lightgray;
+    }
+    & .textareabox {
+      resize: none;
+      padding: 5px;
+      width:90%;
+      height:180px;
+      border: none;
+      font-size: 20px;
+      border-radius: 3px;
+      box-shadow: 0 0 0 3px lightgray;
+    }
+    .imageBox {
+      width: calc(100% - 4px);
+      cursor: pointer;
+      padding-top: 45%;
+      background-color: rgb(247, 243, 243);
+      border: dashed 2px cadetblue;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+      > i {
+        position: absolute;
+          top: 40%;
+          left: 0;
+          right: 0;
+          margin: auto;
+        font-size: 8vh;
+        color: dimgrey;
+      }
+      > img {
+        position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+      }
+      & .filebox {
+        display: none;
+      }
+    }
+  }
+  & .recFormBtn {
+    display: inline-block;
+    margin: 20px auto;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2em;
+    line-height: 70px;
+  }
+  .submit{
+    background-color: cadetblue;
+    border: none;
+    outline: none;
+    appearance: none;
+  }
+  .back{
+    background-color: gray;
+    text-decoration: none;
+  }
+}
+
+.field--label {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: rgb(39, 38, 38);
+  margin-bottom: 5px;
+  > p {
+    font-weight: 100;
+    font-size: 0.9em;
+  }
+  .require {
+    text-align: center;
+    display: inline-block;
+    color: white;
+    font-weight: 100;
+    font-size: 0.9em;
+    background-color: #FF0033;
+    border-radius: 5px;
+    width: 40px;
+  }
+  & select {
+    width: 120px;
+    height: 40px;
+    font-weight: 100;
+    font-size: 1em;
+    outline: none;
+  }
+}
+
+.js-file_group--btn {
+  width: 91%;
+  font-size: 1.5em;  display: flex;
+  justify-content: flex-end;
+  .recbtn {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 50%;
+    text-align:center;
+    font-weight: bold;
+    line-height: 35px;
+    color: white;
+    box-shadow: 0 0 0 1px lightgray;
+    &:hover {
+      box-shadow: 0 0 1px 2px yellow;
+    }
+  }
+  .js-remove {
+    background: orangered;
+  }
+  #js-add {
+    background: turquoise;
+  }
+}

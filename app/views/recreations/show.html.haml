@@ -1,0 +1,31 @@
+#mainContents
+  #recCreate
+    .title 
+      = @recreation.recname
+
+    .field
+      .imageBox
+        = image_tag @recreation.recimage.url
+
+    .field.required
+      .required--item
+        = "必要人数 : #{@recreation.requirednumber.name}"
+      .required--item
+        = "必要時間 : #{@recreation.rectime.item}"
+
+    .field
+      .field--label ●どんなあそび？
+      .textareabox
+        = @recreation.recComment
+
+    .field#textForm
+      .field--label ●あそび方説明
+      -@recreation.explanations.each_with_index do |item, i|
+        %p 
+          = "手順その #{i + 1}"
+          .textareabox
+            = item.recText
+
+    %br
+    .recFormBtn.submit.likeBtn お気に入りに登録
+    = link_to  "戻る", root_path, class:"back recFormBtn"
