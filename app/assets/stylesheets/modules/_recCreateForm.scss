@@ -26,6 +26,7 @@
       box-shadow: $boxShadow;
     }
     & .textareabox {
+      overflow: scroll;
       resize: none;
       padding: 5px;
       width:98%;
