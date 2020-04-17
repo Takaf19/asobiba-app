@@ -54,11 +54,12 @@ html, body{
 }
 
 #mainContents {
-  width: 50%;
+  width: 60%;
   min-width: 450px;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 10px 50px;
+  min-height: calc(100vh - 100px);
 }
 
 .topHedder {
