@@ -6,14 +6,18 @@
     = form_with(model:@recreation, local: true) do |form|
       .field
         .field--label
-          = form.label :recimage, 'タイトル画像', clas:"reclabel"
+          = form.label :recimage, 'タイトル画像/動画', clas:"reclabel"
           %span.require  必須
+          %p (アップロード可能: jpeg png mov mp4)
+          %p ※ブラウザにより動画が表示/再生されない場合があります。
         = form.label :recimage do
           .imageBox
-            = icon('fas', 'image', class: 'icon')
+            .message
+              = icon('fas', 'sad-tear')
+              %p No Image.
             %img.file-preview
-            -# %img.file-preview{src:"assets/NoImage.png"}
-            = form.file_field :recimage, class:"filebox",  required: true, onchange:"selectImage(this)"
+            %video.file-preview{controls: true, autobuffer: true}
+            = form.file_field :recimage, class:"filebox",  required: true, onchange:"titleImageView(this)"
 
       .field
         .field--label
@@ -48,11 +52,24 @@
           %p 最大５つまで追加可能です。
         = form.fields_for :explanations do |text_form|
           .js-file_group{id: "#{text_form.index}"}
+            .textarea-imageBox
+              .message
+                = icon('fas', 'sad-tear')
+                %p No Image.
+              %img.text-imagePreview{style:"display:none"}
+              %video.text-imagePreview{contorols: true, autobuffer: true, style:"display:none"}
             = text_form.text_area :recText, class: 'textareabox', placeholder:"200文字まで", required: true, MaxLength: 200
             .js-file_group--btn
               .recbtn#js-add{onclick:"btnClick()"}+
 
-      %br
+            = text_form.fields_for :image do |text_image|
+              .image-add
+                .textareaImageBtn
+                  .textareaImgAdd.textareaImageBtn--item
+                    = text_image.label :imgurl do
+                      %p 画像追加
+                      = text_image.file_field :imgurl, class:"filebox", style: "display:none", onchange: "textareaImageView()"
+
       = form.submit "登録する", class:"submit recFormBtn"
       %br
       = link_to  "戻る", root_path, class:"back recFormBtn"

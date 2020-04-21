@@ -20,60 +20,68 @@
       </div>
 
       <div id="tabContents">
-        <div v-if="tabNew">
-          <div class="recContents"  v-if="recreations.length == 0">
-            <div class="recContents__nothing">
-              <div class="text">
-                <div class="text--item">
-                  <i class="fas fa-sad-tear"></i>
-                  <p>投稿がまだありません</p>
+        <transition mode="out-in" name="slide">
+          <div v-show="tabNew">
+            <div class="recContents"  v-if="recreations.length == 0">
+              <div class="recContents__nothing">
+                <div class="text">
+                  <div class="text--item">
+                    <i class="fas fa-sad-tear"></i>
+                    <p>投稿がまだありません</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="recContents" v-else v-for="rec in recreations" :key="rec.id">
+              <div class="recContent">
+                <div class="recImage">
+                  <div class="item">
+                    <video :src="rec.recimage.url" autobuffer controls class="item--preview" v-if="setImageType(rec.recimageType)" />
+                    <img :src="rec.recimage.url" class="item--preview" v-else />
+                  </div>
+                  <div class="recImage--updateDate">{{rec.updated_at}}</div>
+                </div>
+      
+                <div class="recComment">
+                  <div class="recComment--title">{{rec.recname}}</div>
+                  <div class="recComment--status">
+                      <p>必要人数:{{rec.requirednumber}}</p>
+                      <p>必要時間:{{rec.rectime}}</p>
+                  </div>
+                  <div class="recComment--title"></div>
+                  <div class="recComment--text">{{rec.recComment}}</div>
+                </div>
+                <a v-bind:href="'/recreations/' + rec.id" >
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </transition>
+        <transition mode="out-in" name="slide">
+          <div v-show="tabPopular">
+            <div class="recContents"  v-if="recreations.length == 0">
+              <div class="recContents__nothing">
+                <div class="text">
+                  <div class="text--item">
+                    <i class="fas fa-sad-tear"></i>
+                    <p>投稿がまだありません</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="recContents"  v-else>
+              <div class="recContents__nothing">
+                <div class="text">
+                  <div class="text--item">
+                    <i class="fas fa-sad-tear"></i>
+                    <p>これからやります</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="recContents" v-for="rec in recreations" :key="rec.id">
-            <a v-bind:href="'/recreations/' + rec.id">
-              <div class="recImage">
-                <div class="item">
-                  <img :src="rec.recimage.url" />
-                </div>
-                <div class="recImage--updateDate">{{rec.updated_at}}</div>
-              </div>
-
-              <div class="recComment">
-                <div class="recComment--title">{{rec.recname}}</div>
-                <div class="recComment--status">
-                    <p>必要人数:{{rec.requirednumber}}</p>
-                    <p>必要時間:{{rec.rectime}}</p>
-                </div>
-                <div class="recComment--title"></div>
-                <div class="recComment--text">{{rec.recComment}}</div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div v-else-if="tabPopular">
-          <div class="recContents"  v-if="recreations.length == 0">
-            <div class="recContents__nothing">
-              <div class="text">
-                <div class="text--item">
-                  <i class="fas fa-sad-tear"></i>
-                  <p>投稿がまだありません</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="recContents"  v-else>
-            <div class="recContents__nothing">
-              <div class="text">
-                <div class="text--item">
-                  <i class="fas fa-sad-tear"></i>
-                  <p>これからやります</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -86,9 +94,11 @@ export default {
   data: function() {
     return {
       recreations: [],
+      imgType: [],
       tabNew: true,
       tabPopular: false,
-      tabCreate: false
+      tabCreate: false,
+      i: 0
     };
   },
   created: function() {
@@ -121,7 +131,44 @@ export default {
         this.tabPopular = false;
         this.tabCreate = false;
       }
-    }
+    },
+    setImageType: function(image) {
+      if (image == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
   }
 };
 </script>
+
+<style scoped>
+
+  /* アニメーション中のスタイル */
+/* 開始時 */
+.slide-enter {
+  transform: translate(-300px, 0);
+  opacity: 0;
+}
+/* 終了時 */
+.slide-enter-to {
+  opacity: 1;
+}
+/* アニメーション実行中 */
+.slide-enter-active {
+  transition: all .5s 0s ease;
+}
+.slide-leave {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.slide-leave-to {
+  transform: translate(300px, 0);
+  opacity: 0;
+}
+.slide-leave-active {
+  transition: all .3s 0s ease;
+}
+
+</style>

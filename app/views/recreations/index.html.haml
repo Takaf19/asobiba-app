@@ -1,1 +1,45 @@
 %router-view
+
+
+-# #mainContents
+-#   #recIndex
+-#     .topHedder
+-#       =image_tag "asobiba-hedder.jpg", class: "topHedder--backImage"
+-#       =image_tag "asobiba-logo.png", class: "topHedder--logo"
+-#       %p — みんなの”あそび”を集めよう —
+
+-#     #recTabs
+-#       #tabs-new.tab
+-#         新着順
+
+-#       #tabs-popular.tab
+-#         人気順
+
+-#     #tabContents
+-#       -if @recreations.empty?
+-#         .recContents
+-#           .recContents__nothing
+-#             .text
+-#               .text--item
+-#                 %i.fas.fa-sad-tear
+-#                 %p 投稿がまだありません
+-#       -else      
+-#         - @recreations.each do |rec|
+-#           .recContents
+-#             = link_to recreation_path(rec.id) do
+-#               .recImage
+-#                 .item
+-#                   = image_tag rec.recimage.url
+-#                 .recImage--updateDate 
+-#                   = rec.updated_at
+-#               .recComment
+-#                 .recComment--title
+-#                   = rec.recname
+-#                 .recComment--status
+-#                   %p 
+-#                     = "必要人数: #{rec.requirednumber.name}"
+-#                   %p 
+-#                     = "必要時間: #{rec.rectime.item}"
+-#                 .recComment--text 
+-#                   = rec.recComment
+

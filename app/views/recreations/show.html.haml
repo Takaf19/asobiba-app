@@ -1,29 +1,41 @@
 #mainContents
-  #recCreate
+  #recShow
     .title 
       = @recreation.recname
 
-    .field
-      .imageBox
-        = image_tag @recreation.recimage.url
+    .Show-imageBox
+      -if @recreation.recimageType == "動画"
+        = video_tag @recreation.recimage.url, class: "Show-imageBox--titeImage", controls: true, autobuffer: true
+      -else
+        = image_tag @recreation.recimage.url, class: "Show-imageBox--titeImage"
 
-    .field.required
+    .required
       .required--item
         = "必要人数 : #{@recreation.requirednumber.name}"
       .required--item
         = "必要時間 : #{@recreation.rectime.item}"
 
     .field
-      .field--label ●どんなあそび？
+      .show-label
+        %p どんなあそび？
       .textareabox
         = @recreation.recComment
 
     .field#textForm
-      .field--label ●あそび方説明
+      .show-label
+        %p あそび方説明
       -@recreation.explanations.each_with_index do |item, i|
-        %p 
-          = "手順その #{i + 1}"
-          .textareabox
+        .textareabox.showTextareaBox
+          -if item.image.present?
+            .Show-imageBox
+              = image_tag item.image.imgurl.url
+              .show-textlabel= "#{i + 1}"
+          -else
+            .Show-noImageBox
+              .show-textlabel
+                .text= "#{i + 1}"
+
+          .showTextareaBox--text
             = item.recText
 
     %br

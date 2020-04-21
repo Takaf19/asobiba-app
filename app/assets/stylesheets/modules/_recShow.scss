@@ -1,0 +1,207 @@
+#recShow {
+  background-color: white;
+  padding: 20px 50px;
+  text-align: center;
+  box-shadow: 0 0 5px 3px lightgray;
+  border-radius: 5px;
+  & .title {
+    padding: 5px;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: cadetblue;
+    border-bottom: $topTabsBorder;
+  }
+  .Show-imageBox {
+    width: calc(100% - 4px);
+    padding-top: 55%;
+    background-color: gray;
+    border: dashed 3px cadetblue;
+    margin: 0 auto;
+    position: relative;
+    &--titeImage {
+      position: absolute;
+        top: 0;
+        left: 0;
+      width:100%;
+      height:100%;
+    }
+    & > img {
+      position: absolute;
+        top: 0;
+        left: 0;
+      width:100%;
+      height:100%;
+    }
+  }
+  & .required {
+    display: flex;
+    margin-bottom: 10px;
+    &--item {
+      margin-right: 30px;
+      font-size: 1em;
+      background: linear-gradient(transparent 60%, #a8eaff 50%);
+    }
+  }
+  & .field {
+    width: 100%;
+    display: inline-block;
+    text-align: left;
+    margin-top: 30px;
+    font-size: 0.9em;
+    .show-label {
+      border-bottom: solid 3px mediumaquamarine;
+      > p {
+        width: 120px;
+        padding: 5px 2px;
+        background-color: mediumaquamarine;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 10px 10px 0 0;
+      }
+    }
+    & .textareabox {
+      background-color: white;
+      // overflow: scroll;
+      padding: 5px;
+    }
+    .showTextareaBox {
+      margin-top: 30px;
+      & .Show-imageBox {
+        position: relative;
+        border: solid 3px #a8eaff;
+        box-shadow: 0 2px 2px 2px lightgray;
+        & .show-textlabel {
+          position: absolute;
+            top: 0;
+            right: 0;
+          background-color:#a8eaff;
+          padding: 5px 25px;
+          border-radius: 0 0 0 10px;
+          box-shadow: 0 2px 2px 0 lightgray;
+        }
+      }
+      & .Show-noImageBox {
+        width: 100%;
+        height: 30px;
+        padding-left: calc(100% - 150px);
+        & .show-textlabel {
+          width: 150px;
+          height: 100%;
+          border-top: 3px dotted #a8eaff;
+          position: relative;
+          > .text {
+            position: absolute;
+              top: -3px;
+              right: 0;
+            text-align: center;
+            width: 50px;
+            background-color:#a8eaff;
+            padding: 5px;
+            border-radius: 0 0 0 10px;
+            box-shadow: 0 2px 2px 0 lightgray;
+          }
+        }
+      }
+      &--text {
+        min-height: 100px;
+        width: 92%;
+        margin: 20px auto 15px;
+        position: relative;
+        padding: 10px 20px;
+        text-align: left;
+        border-top: 2px solid gray;
+        border-bottom: 2px solid gray;
+        &:before, &:after{
+          content: '';
+          position: absolute;
+          top: -8px;
+          width: 2px;
+          height: calc(100% + 1em);
+          background-color: gray;
+          }
+          &:before {
+          left: 10px;
+          }
+          &:after {
+          right: 10px;
+          }
+      }
+    }
+  }
+  & .recFormBtn {
+    display: inline-block;
+    margin: 10px auto;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9em;
+    line-height: 50px;
+  }
+  .submit{
+    background-color: cadetblue;
+    border: none;
+    outline: none;
+    appearance: none;
+  }
+  .back{
+    background-color: gray;
+    text-decoration: none;
+  }
+}
+
+.field--label {
+  font-weight: bold;
+  color: rgb(39, 38, 38);
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  > p {
+    font-weight: 100;
+    font-size: 0.8em;
+  }
+  .require {
+    text-align: center;
+    display: inline-block;
+    color: white;
+    font-weight: 100;
+    font-size: 0.8em;
+    background-color: #FF0033;
+    border-radius: 5px;
+    width: 30px;
+  }
+  & select {
+    width: 100px;
+    height: 30px;
+    font-weight: 100;
+    outline: none;
+  }
+}
+
+.js-file_group--btn {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.2em;
+  .recbtn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 50%;
+    text-align:center;
+    font-weight: bold;
+    line-height: 25px;
+    color: white;
+    box-shadow: 0 0 0 1px lightgray;
+    &:hover {
+      box-shadow: 0 0 1px 2px yellow;
+    }
+  }
+  .js-remove {
+    background: orangered;
+  }
+  #js-add {
+    background: turquoise;
+  }
+}
