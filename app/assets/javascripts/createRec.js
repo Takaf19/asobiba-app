@@ -10,9 +10,26 @@ let fileIndex = [1, 2, 3, 4];
     group.className = "js-file_group"
     group.id = `${index}`;
     group.style.display = 'none'
+    
+    group.appendChild(textareaPreviewCreate());
     group.appendChild(addinput(index));
     group.appendChild(groupbtn(groups, index));
+    group.appendChild(textareaImgViewCreate(index));
     return group
+  }
+
+  // 画像を表示する要素を作成
+  function textareaPreviewCreate() {
+    let imageBox = document.createElement('div');
+    let message = document.createElement('div');
+    imageBox.className = "textarea-imageBox";
+    message.className = "message";
+    message.innerHTML = '<i class="fas fa-sad-tear"></i><p>No Image.</p>'
+    let imgEl = `<img class="text-imagePreview" style="display:none"></img>`
+    let videoEl = `<video class="text-imagePreview" contorols autobuffer style="display:none"></video>`
+    imageBox.appendChild(message);
+    imageBox.insertAdjacentHTML("beforeend", imgEl + videoEl)
+    return imageBox
   }
 
   // inputを生成する関数
@@ -62,6 +79,34 @@ let fileIndex = [1, 2, 3, 4];
     const text = document.createTextNode("−");
     removebtn.appendChild(text);
     return removebtn
+  }
+
+  // 画像を追加するボタンを作成
+  function textareaImgViewCreate(index) {
+    let imageAdd = document.createElement('div');
+    let textareaImageBtn = document.createElement('div');
+    let textareaImgAdd = document.createElement('div');
+    let label = document.createElement('label');
+    let textBox = document.createElement('input');
+  
+    imageAdd.className = "image-add";
+    textareaImageBtn.className = "textareaImageBtn";
+    textareaImgAdd.className = "textareaImgAdd textareaImageBtn--item";
+    label.htmlFor = `recreation_explanations_attributes_${index}_image_attributes_imgurl`;
+    
+    textBox.type = "file";
+    textBox.className = "filebox"
+    textBox.name = `recreation[explanations_attributes][${index}][image_attributes][imgurl]`
+    textBox.id = `recreation_explanations_attributes_${index}_image_attributes_imgurl`
+    textBox.style.display = "none";
+    textBox.addEventListener('change', textareaImageView, false);
+    
+    label.innerHTML = '<p>画像追加</p>'
+    label.appendChild(textBox);
+    textareaImgAdd.appendChild(label);
+    textareaImageBtn.appendChild(textareaImgAdd);
+    imageAdd.appendChild(textareaImageBtn);
+    return imageAdd
   }
 
   // フェードアウトの処理
