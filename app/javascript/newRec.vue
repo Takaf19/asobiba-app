@@ -133,7 +133,7 @@ export default {
       }
     },
     setImageType: function(image) {
-      if (image == 0) {
+      if (image == "画像") {
         return false;
       } else {
         return true;

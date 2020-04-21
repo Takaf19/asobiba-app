@@ -68,7 +68,7 @@
                   .textareaImgAdd.textareaImageBtn--item
                     = text_image.label :imgurl do
                       %p 画像追加
-                      = text_image.file_field :imgurl, class:"filebox", style: "display:none", onchange: "textareaImageView()"
+                      = text_image.file_field :imgurl, class:"filebox", style: "display:none", onchange: "textareaImageView()", MaxLength: 200
 
       = form.submit "登録する", class:"submit recFormBtn"
       %br
