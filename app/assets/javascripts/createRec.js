@@ -10,7 +10,7 @@ let fileIndex = [1, 2, 3, 4];
     group.className = "js-file_group"
     group.id = `${index}`;
     group.style.display = 'none'
-    
+
     group.appendChild(textareaPreviewCreate());
     group.appendChild(addinput(index));
     group.appendChild(groupbtn(groups, index));
@@ -38,7 +38,7 @@ let fileIndex = [1, 2, 3, 4];
     let input_data = document.createElement('textarea');
     input_data.className = "textareabox";
     input_data.required = "required";
-    input_data.maxlength = "200";
+    input_data.maxLength = "200";
     input_data.placeholder = "200文字まで";
     input_data.name = `recreation[explanations_attributes][${index}][recText]`;
     input_data.id = `recreation_explanations_attributes_${index}_recText`;
