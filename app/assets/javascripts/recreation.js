@@ -63,7 +63,6 @@ function textareaImgHidden() {
 function titleImageView(e) {
   let imgBox = (e.parentNode).querySelector('img');
   let videoBox = (e.parentNode).querySelector('img');
-  debugger
   if ( e == null ) { 
     return false
   } else if(e.files.length == 0) {
@@ -113,7 +112,6 @@ if(document.URL.match("recreations/new")){
 
 }
 // function scrollRecTab() {
-//   debugger
 //   let element = event.target.parentNode; // 移動させたい位置の要素を取得
 //   // let rect = element.getBoundingClientRect();
 //   // let position = rect.top;    // 一番上からの位置を取得
