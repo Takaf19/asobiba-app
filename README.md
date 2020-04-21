@@ -83,6 +83,7 @@ Javascriptを使用し、ユーザーが使いやすく、動きのあるフロ�
 |------|----|-------|
 |recname|string|null: false|
 |recimage|text|null: false|
+|recimageType|integer|null: false|
 |recComment|text|null: false|
 |rectime_id|integer|null: false|
 |requiredNumber_id|integer|null: false|
@@ -103,6 +104,7 @@ Javascriptを使用し、ユーザーが使いやすく、動きのあるフロ�
 
 ### Association
 - belongs_to :recreation
+- belongs_to :image
 
 # bookmarksテーブル
 |Column|Type|Options|
@@ -119,8 +121,7 @@ Javascriptを使用し、ユーザーが使いやすく、動きのあるフロ�
 |Column|Type|Options|
 |------|----|-------|
 |imgurl|text|null: false|
-|imgtype|string|null: false|
-|recreation_id|integer|null: false, foreign_key: true|
+|explanation_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :recreation
+- belongs_to :explanation
