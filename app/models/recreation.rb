@@ -6,7 +6,7 @@ class Recreation < ApplicationRecord
 
   belongs_to :user
   has_many :explanations, dependent: :destroy
-  accepts_nested_attributes_for :explanations, allow_destroy: true
+  accepts_nested_attributes_for :explanations, allow_destroy: true, update_only: true
   has_many :images,       dependent: :destroy
   has_many :bookmarks,    dependent: :destroy
   has_many :users,        through: :bookmarks, source: :user_id
@@ -14,4 +14,7 @@ class Recreation < ApplicationRecord
   mount_uploader :recimage, ImageUploader
   validates :recname, :recimage, :recComment, :rectime_id, :requirednumber_id, presence: true
   validates :recComment, length: {maximum: 200}
+
+  enum recimageType: [ "画像", "動画" ]
+
 end
