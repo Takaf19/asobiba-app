@@ -1,6 +1,6 @@
 class Image < ApplicationRecord
-  belongs_to :recreation
+  belongs_to :explanation
 
   mount_uploader :imgurl, ImageUploader
-  validates :imgurl,:imgtype, presence: true
+  validates :imgurl, presence: true
 end
