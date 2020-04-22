@@ -13,8 +13,6 @@
       = link_to root_path,class:"topHedder__logo" do
         =image_tag "asobiba-logo.png", height:"50px"
       - if user_signed_in?
-        .userName
-          = "ようこそ #{current_user.nickname}さん"
         .hedder__item
           .hedder__item--icons
             = link_to new_recreation_path, class:"hedderBtn", id:"recCreateBtn" do

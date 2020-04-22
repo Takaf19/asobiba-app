@@ -113,6 +113,7 @@
         text-align: left;
         border-top: 2px solid gray;
         border-bottom: 2px solid gray;
+        word-wrap: break-word;
         &:before, &:after{
           content: '';
           position: absolute;
@@ -140,13 +141,15 @@
     font-size: 0.9em;
     line-height: 50px;
   }
-  .submit{
+  & .submit{
     background-color: cadetblue;
     border: none;
     outline: none;
     appearance: none;
+    margin-top: 50px;
+
   }
-  .back{
+  & .back{
     background-color: gray;
     text-decoration: none;
   }

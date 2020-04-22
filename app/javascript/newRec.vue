@@ -2,9 +2,22 @@
   <div id="mainContents">
     <div id="recIndex">
       <div class="topHedder">
-        <img src="assets/asobiba-hedder.jpg" class="topHedder--backImage" />
-        <img src="assets/asobiba-logo.png" class="topHedder--logo" />
-        <p>— みんなの”あそび”を集めよう —</p>
+        <div class="topHedder__imgBox" id="top-imgBox1">
+          <img src="assets/asobiba-hedder.jpg" class="topHedder__imgBox--backImage" />
+          <img src="assets/asobiba-logo.png" class="topHedder__imgBox--logo" />
+          <p class="top-imgBox1--title">— みんなの”あそび”を集めよう —</p>
+        </div>
+        <div class="topHedder__imgBox" id="top-imgBox2">
+          <a v-bind:href="'/recreations/' + 1" >
+            <img src="assets/NoImage.png" class="topHedder__imgBox--backImage" />
+            <div class="top-recInfo">
+              <p class="top-imgBox--rectitle">タイトル</p>
+              <div class="top-likeCount">
+                <p><i class="fas fa-star"></i>10</p>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
       <div id="recTabs">
         <div class="tab" id="tabs-new" 
