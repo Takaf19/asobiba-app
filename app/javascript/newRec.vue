@@ -145,30 +145,6 @@ export default {
 
 <style scoped>
 
-  /* アニメーション中のスタイル */
-/* 開始時 */
-.slide-enter {
-  transform: translate(-300px, 0);
-  opacity: 0;
-}
-/* 終了時 */
-.slide-enter-to {
-  opacity: 1;
-}
-/* アニメーション実行中 */
-.slide-enter-active {
-  transition: all .5s 0s ease;
-}
-.slide-leave {
-  transform: translate(0, 0);
-  opacity: 1;
-}
-.slide-leave-to {
-  transform: translate(300px, 0);
-  opacity: 0;
-}
-.slide-leave-active {
-  transition: all .3s 0s ease;
-}
+
 
 </style>
