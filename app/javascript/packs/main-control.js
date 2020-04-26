@@ -36,6 +36,7 @@ import VueRouter from 'vue-router'
 import App from '../app.vue'
 import Footer from '../footer.vue'
 import Router from "./router";
+import UserShow from '../userShow.vue'
 
 
 Vue.use(VueRouter)
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     router:Router,
     components: {
       'footer-item': Footer,
+      'user-show': UserShow,
     }
     // render: h => h(app)
   });
