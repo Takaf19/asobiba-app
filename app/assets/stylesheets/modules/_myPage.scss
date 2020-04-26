@@ -1,0 +1,230 @@
+#myPageContents {
+  margin: 0 auto 40px;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1000px;
+  min-width:780px;
+  min-height: $mypage-height;
+  & .side-bar {
+    background-color: yellow;
+    width: 300px;
+    min-width: 250px;
+    margin-right: 20px;
+  }
+  & #myPage-Pages {
+    width: 100%;
+  }
+}
+
+.profile {
+  min-width: 500px;
+  position: relative;
+  box-shadow: 0px 0px 10px 5px rgba(155, 182, 221, 0.6);
+  background: rgba(155, 182, 221, 0.3);
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: '';
+    box-shadow: 0px 0px 10px 5px rgba(155, 184, 221, 0.5) inset;
+  }
+  &__image {
+    height: 250px;
+    background-image: url("back_wood.png");
+    background-size: contain;
+    text-align: center;
+    > img {
+      margin-top: 40px;
+      height: 150px;
+      width: 150px;
+      border-radius: 150px;
+    }
+    > p {
+    }
+    &--items {
+    }
+  }
+  .user-counts {
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    backdrop-filter: blur(12px);
+    > span {
+      padding: 10px;
+      width: 50%;
+      height: 20px;
+      text-align: right;
+      padding-right: 20px;
+      position: relative;
+      & .icon {
+        text-align: left;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: calc(100% - 2px);
+        min-width: 80px;
+        line-height: 2.8em;
+        border-radius: 0 60px 5px 0;
+        border-left:solid 1px lightgray;
+        font-size: 0.9em;
+        padding: 0 20px 0 5px;
+        > i {
+          color:white;
+          text-shadow: 2px 2px lightslategray;
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+  &__contents {
+    margin-top: 6px;
+    width: 100%;
+    color: #333;
+    display: flex;
+    .user-info {
+      width: 70%;
+      height: 100%;
+      & .profile__contents--item {
+        display: flex;
+        margin-bottom: 2px;
+        > p {
+          padding: 10px 20px 0px;
+          width: 120px;
+          min-width: 120px;
+          backdrop-filter: blur(12px);
+          font-size: 25px;
+          font-style:italic;
+        }
+        & .sankaku {
+          font-size: 1.2em;
+          color: rgb(160, 197, 253)
+        }
+        > span {
+          padding: 30px 5px 5px;
+          background-color:rgba(255, 255, 255, 0.9);
+        }
+        & .user-item {
+          width: 100%;
+        }
+        p:first-letter{
+          font-size: 1.8em;
+        }
+      }
+      & .profile__contents--editPass {
+        background-image: url("leaf.jpg");
+        height: 100px;
+        background-size: cover;
+        & .editPass-text {
+          backdrop-filter: blur(5px);
+          height: 100%;
+          width: 100%;
+          position: relative;
+          display: flex;
+          align-items: center;
+          z-index: 2;
+          opacity: 0.7;
+          color: #333;
+          transition: .5s;
+          &:hover > p::before {
+            transform-origin: left top;
+            transform: scale(1, 1);
+          }
+          &:hover > p {
+            color: white;
+            text-shadow: none;
+          }
+          > p {
+            width: 100%;
+            padding: 10px 0;
+            transition: .5s;
+            text-align: center;
+            position: relative;
+            font-style:italic;
+            font-size: 1.2em;
+            text-shadow: white 1px 1px;
+            &::before {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              z-index: -1;
+              content: '';
+              background: #333;
+              transform-origin: right top;
+              transform: scale(0, 1);
+              transition: transform .3s;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__contents--edit {
+    width: 30%;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    background-image: url("Flower.jpg");
+    background-size: cover;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    &:before{
+      content: '';
+      background: inherit;
+      filter: blur(2px);
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      z-index: -1;
+    }
+    & .edit-text {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      color: #333;
+      transition: .5s;
+      &:hover > p::before {
+        transform-origin: left top;
+        transform: scale(1, 1);
+      }
+      &:hover > p {
+        color: white;
+        text-shadow: none;
+      }
+      > p {
+        width: 100%;
+        padding: 10px 0;
+        transition: .5s;
+        text-align: center;
+        position: relative;
+        font-style:italic;
+        font-size: 1.2em;
+        text-shadow: white 1px 1px;
+        &::before {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          content: '';
+          background: #333;
+          transform-origin: right top;
+          transform: scale(0, 1);
+          transition: transform .3s;
+        }
+      }
+    }
+  }
+}

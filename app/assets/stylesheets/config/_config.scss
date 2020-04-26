@@ -1,5 +1,6 @@
 $hedder-height: 50px;
 $footer-height: 120px;
 $app-padding: $hedder-height+50px;
+$mypage-height: calc(100vh - (#{$hedder-height} + #{$footer-height}));
 $topTabsBorder: 3px solid cadetblue;
 $boxShadow: 0 0 0 2px lightgray;
