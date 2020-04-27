@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :api do
+    get 'users/show'
+  end
   devise_for :users
   root 'recreations#index'
 
@@ -11,5 +14,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :recreations, only:[:index, :new, :create]
+    resources :users, only:[:show]
   end
 end
