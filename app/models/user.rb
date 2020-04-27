@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :recreations, dependent: :destroy
   has_many :bookmarks,   dependent: :destroy
-  has_many :recreations, through: :bookmarks, source: :recreation_id
+  has_many :recreations, through: :bookmarks
 
   validates :nickname, :email, presence: true
   mount_uploader :user_image, ImageUploader

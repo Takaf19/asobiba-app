@@ -9,7 +9,7 @@ class Recreation < ApplicationRecord
   accepts_nested_attributes_for :explanations, allow_destroy: true, update_only: true
   has_many :images,       dependent: :destroy
   has_many :bookmarks,    dependent: :destroy
-  has_many :users,        through: :bookmarks, source: :user_id
+  has_many :users,        through: :bookmarks
 
   mount_uploader :recimage, ImageUploader
   validates :recname, :recimage, :recComment, :rectime_id, :requirednumber_id, presence: true
