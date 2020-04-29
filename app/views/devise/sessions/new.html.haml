@@ -1,22 +1,21 @@
-#mainContents
-  #recCreate
-    .title Log in
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .field
-        .field--label
-          = f.label :email, "メールアドレス"
-        = f.email_field :email, class:"textbox", autofocus: true, autocomplete: "email"
-      .field
-        .field--label
-          = f.label :password, "パスワード"
-        = f.password_field :password, class:"textbox", autocomplete: "current-password"
-      - if devise_mapping.rememberable?
-        .field
-          = f.check_box :remember_me
-          = f.label :remember_me, "パスワードを保存する"
+.signForm
+  .signForm--title Log in
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field
+      = f.email_field :email, class:"textbox", autofocus: true, placeholder:"メールアドレス", class:"textbox",  autocomplete: "email"
+    .field
+      = f.password_field :password, class:"textbox", placeholder:"Password", class:"textbox", autocomplete: "current-password"
+    
+    - if devise_mapping.rememberable?
+      .password_field
+        = f.check_box :remember_me
+        = f.label :remember_me, "パスワードを保存する"
+    
+    = f.submit "ログイン", class:"submit recFormBtn"
+    = link_to  "Topへ戻る", root_path, class:"back recFormBtn"
 
-      %br
-      = f.submit "ログイン", class:"submit recFormBtn"
-
-    = link_to  "戻る", root_path, class:"back recFormBtn"
-    = render "devise/shared/links"
+    .signInUpLink
+      %p はじめての方はこちら
+      = link_to  "新規登録", new_user_registration_path, class:"signInUp"
+    
+  -# = render "devise/shared/links"

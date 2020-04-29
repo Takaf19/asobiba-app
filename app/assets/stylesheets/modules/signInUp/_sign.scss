@@ -1,0 +1,99 @@
+.signForm {
+  background-color:rgba(255, 255, 255, 0.8);
+  width: 60%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  text-align: center;
+  box-shadow: 0 0 5px 3px lightgray;
+  border-radius: 5px;
+  &--title {
+    padding: 5px;
+    margin-bottom: 40px;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: cadetblue;
+    border-bottom: $topTabsBorder;
+  }
+  & form {
+    padding: 0 20px;
+    text-align: center;
+    & .field {
+      width: 100%;
+      margin-top: 25px;
+      &--label {
+        text-align: left;
+        color: rgb(39, 38, 38);
+        margin-bottom: 5px;
+        > p {
+          // font-weight: 100;
+          // font-size: 0.8em;
+        }
+        & .require {
+          text-align: center;
+          display: inline-block;
+          color: white;
+          background-color: #FF0033;
+          border-radius: 5px;
+          width: 30px;
+        }
+        & select {
+          width: 100px;
+          height: 30px;
+          font-weight: 100;
+          outline: none;
+        }
+      }
+      & .textbox {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        box-shadow: $boxShadow;
+      }
+    }
+    & .password_field {
+      margin-top: 10px;
+      text-align: left;
+    }
+  }
+  & .recFormBtn {
+    display: inline-block;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9em;
+    line-height: 50px;
+  }
+  & .submit{
+    margin-top: 30px;
+    background-color: cadetblue;
+    border: none;
+    outline: none;
+    appearance: none;
+  }
+  & .back{
+    margin-top: 10px;
+    background-color: gray;
+    text-decoration: none;
+  }
+  & .signInUpLink {
+    margin: 50px 0 20px;
+    border-top: dashed 2px cadetblue;
+    color: rgb(77, 74, 74);
+    > p {
+      line-height: 40px;
+    }
+    & .signInUp {
+      display: inline-block;
+      color: rgb(77, 74, 74);
+      width: 95%;
+      line-height: 40px;
+      text-decoration: none;
+      background-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 2px 2px 2px 2px gray;
+    }
+  }
+}
