@@ -2,9 +2,14 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "config/config";
+@import "mixin/mixin";
 @import "modules/recreation";
 @import "modules/recCreateForm";
 @import "modules/recShow";
 @import "modules/vue";
 @import "modules/topPage-imgBox";
-@import "modules/myPage";
+// マイページ関連
+@import "modules/myPage/myPage";
+@import "modules/myPage/profile";
+@import "modules/myPage/likeList";
+@import "modules/myPage/recList";

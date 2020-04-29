@@ -1,5 +1,5 @@
 #recShow {
-  background-color: white;
+  background-color:rgba(255, 255, 255, 0.9);
   padding: 20px 50px;
   text-align: center;
   box-shadow: 0 0 5px 3px lightgray;
@@ -34,23 +34,22 @@
       height:100%;
     }
   }
-  & .required {
-    display: flex;
-    margin-bottom: 10px;
-    &--item {
-      margin-right: 30px;
-      font-size: 1em;
-      background: linear-gradient(transparent 60%, #a8eaff 50%);
+  & .like-count {
+    text-align: right;
+    > i {
+      color: rgb(255, 187, 0);
     }
+    margin-bottom: 20px;
   }
   & .field {
     width: 100%;
     display: inline-block;
     text-align: left;
-    margin-top: 30px;
+    margin-bottom: 30px;
     font-size: 0.9em;
     .show-label {
       border-bottom: solid 3px mediumaquamarine;
+      position: relative;
       > p {
         width: 120px;
         padding: 5px 2px;
@@ -60,10 +59,23 @@
         text-align: center;
         border-radius: 10px 10px 0 0;
       }
+      & .required {
+        position: absolute;
+          bottom: 5px;
+          left: 140px;
+        display: flex;
+        &--item {
+          padding: 2px 15px;
+          margin-right: 10px;
+          font-size: 1em;
+          border-radius: 10px;
+          background-color: rgba(#71dbfc, 0.8);
+          font-style:italic;
+          color: rgb(59, 57, 57);
+        }
+      }
     }
     & .textareabox {
-      background-color: white;
-      // overflow: scroll;
       padding: 5px;
     }
     .showTextareaBox {
@@ -179,32 +191,5 @@
     height: 30px;
     font-weight: 100;
     outline: none;
-  }
-}
-
-.js-file_group--btn {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 1.2em;
-  .recbtn {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    margin: 5px;
-    border-radius: 50%;
-    text-align:center;
-    font-weight: bold;
-    line-height: 25px;
-    color: white;
-    box-shadow: 0 0 0 1px lightgray;
-    &:hover {
-      box-shadow: 0 0 1px 2px yellow;
-    }
-  }
-  .js-remove {
-    background: orangered;
-  }
-  #js-add {
-    background: turquoise;
   }
 }

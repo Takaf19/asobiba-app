@@ -1,0 +1,20 @@
+@mixin hedderBtn($val) {
+  position: relative;
+  &::before {
+    position: absolute;
+    bottom: -45px;
+    left: -5px;
+    right: 0;
+    font-size: 0.7em;
+    color: black;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    transition: 0.5s;
+    content: $val;
+    text-shadow: 1px 1px gray;
+  }
+  &:hover::before{
+    opacity: 1;
+  }
+}
