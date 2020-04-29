@@ -1,13 +1,13 @@
 <template>
   <div id="myPageContents">
     <div class="side-bar">
-      <div class="side-ber--link" v-bind:class="{ 'active': page0 }" @click="current=0" >
+      <div class="side-bar--link" @click = "selectPage(0)" v-bind:class="{'active': pages[0] }"  >
         <p>ユーザー情報</p>
       </div>
-      <div class="side-ber--link" v-bind:class="{ 'active': page1 }" @click="current=1" >
+      <div class="side-bar--link" @click = "selectPage(1)" v-bind:class="{'active': pages[1] }" >
         <p>お気に入り一覧</p>
       </div>
-      <div class="side-ber--link" v-bind:class="{ 'active': page2 }" @click="current=2" >
+      <div class="side-bar--link" @click = "selectPage(2)" v-bind:class="{'active': pages[2]}" >
         <p>投稿一覧</p>
       </div>
     </div>
@@ -20,23 +20,20 @@
 
 <script>
 import Profile from "./myPage/profile.vue";
-import LikePage from "./myPage/likePage.vue";
-import UserRec from "./myPage/userRec.vue";
+import LikeList from "./myPage/likeList.vue";
+import RecList from "./myPage/recList.vue";
 import axios from "axios";
 export default {
   components: {
     profile: Profile,
-    likePage: LikePage,
-    userRec: UserRec,
+    likeList: LikeList,
+    recList: RecList,
   },
   data: function() {
     return {
-    componentTypes: ["profile", "likePage","userRec"],
+    componentTypes: ["profile", "likeList","recList"],
     current: 0,
-    i : 0,
-    page0: true,
-    page1: false,
-    page2: false,
+    pages: [true,false,false],
     user: Object,
     recreations:[],
     bookmarks: [],
@@ -55,14 +52,15 @@ export default {
       userInfo() {
         axios.get(`/api/users/${this.$route.params['id']}`).then(
           res => {
+            let i = 0
             // ユーザー情報
             this.user = res.data.user
             // 投稿情報
-            for (var i = 0; i < res.data.recreations.length; i++) {
+            for (i = 0; i < res.data.recreations.length; i++) {
               this.recreations.push(res.data.recreations[i]);
             }
             // ブックマーク
-            for (var i = 0; i < res.data.bookmarks.length; i++) {
+            for (i = 0; i < res.data.bookmarks.length; i++) {
               this.bookmarks.push(res.data.bookmarks[i]);
             }
           },
@@ -71,6 +69,16 @@ export default {
           }
         );
       },
+      selectPage: function(id) {
+        for (let i = 0; i < this.pages.length; i++) {
+          if( i == id) {
+            this.pages.splice(i, 1, true);
+            this.current = i
+          } else if(this.pages[i] === true) {
+            this.pages.splice(i, 1, false);
+          }
+        }
+      }
     },
 };
 

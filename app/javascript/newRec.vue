@@ -61,7 +61,6 @@
                       <p>必要人数:{{rec.requirednumber}}</p>
                       <p>必要時間:{{rec.rectime}}</p>
                   </div>
-                  <div class="recComment--title"></div>
                   <div class="recComment--text">{{rec.recComment}}</div>
                 </div>
                 <a v-bind:href="'/recreations/' + rec.id" >
