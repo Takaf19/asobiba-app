@@ -53,13 +53,14 @@
                     <img :src="rec.recimage.url" class="item--preview" v-else />
                   </div>
                   <div class="recImage--updateDate">{{rec.updated_at}}</div>
+                  <div class="recImage--bookmark"><i class="fas fa-star"></i>{{rec.bookmark}}</div>
                 </div>
       
                 <div class="recComment">
                   <div class="recComment--title">{{rec.recname}}</div>
                   <div class="recComment--status">
-                      <p>必要人数:{{rec.requirednumber}}</p>
-                      <p>必要時間:{{rec.rectime}}</p>
+                      <p><i class="fas fa-user-circle"></i>{{rec.requirednumber}}</p>
+                      <p><i class="fas fa-clock"></i>{{rec.rectime}}</p>
                   </div>
                   <div class="recComment--text">{{rec.recComment}}</div>
                 </div>
@@ -72,24 +73,39 @@
         </transition>
         <transition mode="out-in" name="slide">
           <div v-show="tabPopular">
-            <div class="recContents"  v-if="recreations.length == 0">
+            <div class="recContents"  v-if="populars.length == 0">
               <div class="recContents__nothing">
                 <div class="text">
                   <div class="text--item">
                     <i class="fas fa-sad-tear"></i>
-                    <p>投稿がまだありません</p>
+                    <p>お気に入りされた'あそび'がありません</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="recContents"  v-else>
-              <div class="recContents__nothing">
-                <div class="text">
-                  <div class="text--item">
-                    <i class="fas fa-sad-tear"></i>
-                    <p>これからやります</p>
+
+            <div class="recContents" v-else v-for="poplar in populars" :key="poplar.id">
+              <div class="recContent">
+                <div class="recImage">
+                  <div class="item">
+                    <video :src="poplar.recimage.url" autobuffer controls class="item--preview" v-if="setImageType(poplar.recimageType)" />
+                    <img :src="poplar.recimage.url" class="item--preview" v-else />
                   </div>
+                  <div class="recImage--updateDate">{{poplar.updated_at}}</div>
+                  <div class="recImage--bookmark"><i class="fas fa-star"></i>{{poplar.bookmark}}</div>
                 </div>
+      
+                <div class="recComment">
+                  <div class="recComment--title">{{poplar.recname}}</div>
+                  <div class="recComment--status">
+                      <p><i class="fas fa-user-circle"></i>{{poplar.requirednumber}}</p>
+                      <p><i class="fas fa-clock"></i>{{poplar.rectime}}</p>
+                  </div>
+                  <div class="recComment--text">{{poplar.recComment}}</div>
+                </div>
+                <a v-bind:href="'/recreations/' + poplar.id" >
+                  <i class="fas fa-chevron-right"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -106,6 +122,7 @@ export default {
   data: function() {
     return {
       recreations: [],
+      populars: [],
       imgType: [],
       tabNew: true,
       tabPopular: false,
@@ -122,6 +139,9 @@ export default {
         res => {
           for (var i = 0; i < res.data.recreations.length; i++) {
             this.recreations.push(res.data.recreations[i]);
+          }
+          for (var i = 0; i < res.data.populars.length; i++) {
+            this.populars.push(res.data.populars[i]);
           }
         },
         error => {
