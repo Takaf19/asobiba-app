@@ -13,7 +13,9 @@
     </div>
     <div id="myPage-Pages">
       <!-- <profile /> -->
-      <div v-bind:is="component" :user="user" :recreations="recreations" :bookmarks="bookmarks"></div>
+      <transition mode="out-in" name="myPageslide">
+        <div v-bind:is="component" :user="user" :recreations="recreations" :bookmarks="bookmarks"></div>
+      </transition>
     </div>
   </div>
 </template>

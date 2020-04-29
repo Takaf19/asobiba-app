@@ -1,30 +1,35 @@
-#mainContents
-  #recCreate
-    .title  Sign up
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = render "devise/shared/error_messages", resource: resource
-      .field
-        .field--label
-          = f.label :nickname, "ニックネーム"
-          %span.require  必須
-        = f.text_field :nickname, class:"textbox", autofocus: true, autocomplete: "nickname",placeholder:"6文字まで" ,  maxlength: "6"
-      .field
-        .field--label
-          = f.label :email, "メールアドレス"
-          %span.require  必須
-        = f.email_field :email, class:"textbox", autocomplete: "email"
-      .field
-        .field--label
-          = f.label :password, "パスワード"
-          %span.require  必須
-        = f.password_field :password, class:"textbox",  autocomplete: "new-password", placeholder:"#{@minimum_password_length} 文字以上"
-      .field
-        .field--label
-          = f.label :password_confirmation, "パスワード確認"
-          %span.require 必須
-        = f.password_field :password_confirmation, class:"textbox", autocomplete: "new-password"
+.signForm
+  .signForm--title Sign up
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field
+      .field--label
+        = f.label :nickname, "ニックネーム"
+        %span.require  必須
+      = f.text_field :nickname, class:"textbox", autofocus: true, autocomplete: "nickname",placeholder:"6文字まで" ,  maxlength: "6"
+    .field
+      .field--label
+        = f.label :email, "メールアドレス"
+        %span.require  必須
+      = f.email_field :email, class:"textbox", placeholder:"@必須", autocomplete: "email"
+    .field
+      .field--label
+        = f.label :password, "パスワード"
+        %span.require  必須
+      = f.password_field :password, class:"textbox",  autocomplete: "new-password", placeholder:"#{@minimum_password_length} 文字以上"
+    .field
+      .field--label
+        = f.label :password_confirmation, "パスワード確認"
+        %span.require 必須
+      = f.password_field :password_confirmation, class:"textbox", autocomplete: "new-password"
       
-      = f.submit "登録する", class:"recFormBtn submit"
-         
-    = link_to  "戻る", root_path, class:"back recFormBtn" 
-    = render "devise/shared/links"
+
+    = f.submit "登録する", class:"recFormBtn submit"   
+    = link_to  "Topへ戻る", root_path, class:"back recFormBtn"
+
+    .signInUpLink
+      %p 登録済みの方はこちら
+      = link_to  "ログイン", user_session_path, class:"signInUp"
+
+
+-# = render "devise/shared/links"

@@ -8,20 +8,20 @@
       </div>
     </div>
     <div class="user-counts">
-      <span>
-        {{ recreations.length }}
+      <div class="user-counts--item">
         <div class="icon">
           <i class="fas fa-pencil-alt"></i>
           <span>投稿した数</span>
         </div>
-      </span>
-      <span>
-        {{ bookmarks.length }}
+        <p>{{ recreations.length }}</p>
+      </div>
+      <div class="user-counts--item">
         <div class="icon">
           <i class="fas fa-star"></i>
           <span>お気に入りした数</span>
         </div>
-      </span>
+        <p>{{ bookmarks.length }}</p>
+      </div>
     </div>
     <div class="profile__contents">
       <div class="user-info">

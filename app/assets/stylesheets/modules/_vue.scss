@@ -1,4 +1,4 @@
-/* アニメーション中のスタイル */
+/* トップページのアニメーション */
 /* 開始時 */
 .slide-enter {
   transform: translate(-300px, 0);
@@ -22,4 +22,31 @@
 }
 .slide-leave-active {
   transition: all .3s 0s ease;
+}
+
+
+/* マイページのアニメーション */
+/* 開始時 */
+.myPageslide-enter {
+  transform: translate(0px, 0);
+  opacity: 0;
+}
+/* 終了時 */
+.myPageslide-enter-to {
+  opacity: 1;
+}
+/* アニメーション実行中 */
+.myPageslide-enter-active {
+  transition: all .4s 0s ease-in;
+}
+.myPageslide-leave {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.myPageslide-leave-to {
+  transform: translate(200px, 0);
+  opacity: 0;
+}
+.myPageslide-leave-active {
+  transition: all .2s 0s ease-in;
 }
