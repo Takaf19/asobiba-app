@@ -15,22 +15,19 @@
       - if user_signed_in?
         .hedder__item
           .hedder__item--icons
+            = link_to user_path(current_user.id), class:"hedderBtn", id:"myPageBtn" do
+              = icon("fas", "user")
             = link_to new_recreation_path, class:"hedderBtn", id:"recCreateBtn" do
               = icon("fas", "lightbulb")
-              %p あそびを登録
-            = link_to destroy_user_session_path, class:"hedderBtn", method: :delete do
+            = link_to destroy_user_session_path, class:"hedderBtn", id:"logOutBtn", method: :delete do
               = icon("fas", "sign-out-alt")
-              %p ログアウト
-
       -else
         .hedder__item
           .hedder__item--icons
-            = link_to new_user_registration_path, class:"hedderBtn" do
-              = icon("fas", "sign-in-alt")
-              %p 新規登録
-            = link_to user_session_path, class:"hedderBtn" do
+            = link_to new_user_registration_path, class:"hedderBtn", id:"userNewtBtn" do
               = icon("far", "user-circle")
-              %p ログイン 
+            = link_to user_session_path, class:"hedderBtn", id:"logInBtn" do
+              = icon("fas", "sign-in-alt")
 
     .animation
       #app

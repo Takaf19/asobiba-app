@@ -9,15 +9,18 @@
       -else
         = image_tag @recreation.recimage.url, class: "Show-imageBox--titeImage"
 
-    .required
-      .required--item
-        = "必要人数 : #{@recreation.requirednumber.name}"
-      .required--item
-        = "必要時間 : #{@recreation.rectime.item}"
+    .like-count
+      =icon("fas", "star")
+      = @recreation.bookmarks.length
 
     .field
       .show-label
         %p どんなあそび？
+        .required
+          .required--item
+            = "必要人数 : #{@recreation.requirednumber.name}"
+          .required--item
+            = "必要時間 : #{@recreation.rectime.item}"
       .textareabox
         = @recreation.recComment
 
@@ -40,4 +43,4 @@
 
     %br
     .recFormBtn.submit.likeBtn お気に入りに登録
-    = link_to  "戻る", root_path, class:"back recFormBtn"
+    = link_to  "戻る", 'javascript:history.back()', class:"back recFormBtn"
