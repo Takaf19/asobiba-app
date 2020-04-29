@@ -23,12 +23,14 @@
               <img :src="like.recimage.url" class="likeImage__item--preview" v-else />
             </div>
             <div class="likeImage--updateDate">{{like.updated_at}}</div>
+            <div class="likeImage--bookmark"><i class="fas fa-star"></i>{{like.bookmark}}</div>
+
           </div>
           <div class="likeComment">
             <div class="likeComment--title">{{like.recname}}</div>
             <div class="likeComment--status">
-              <p>必要人数:{{like.requirednumber}}</p>
-              <p>必要時間:{{like.rectime}}</p>
+              <p><i class="fas fa-user-circle"></i>{{like.requirednumber}}</p>
+              <p><i class="fas fa-clock"></i>{{like.rectime}}</p>
             </div>
             <div class="likeComment--text">{{like.recComment}}</div>
           </div>

@@ -23,12 +23,14 @@
               <img :src="rec.recimage.url" class="recImage__item--preview" v-else />
             </div>
             <div class="recImage--updateDate">{{rec.updated_at}}</div>
+            <div class="recImage--bookmark"><i class="fas fa-star"></i>{{rec.bookmark}}</div>
+
           </div>
           <div class="recComment">
             <div class="recComment--title">{{rec.recname}}</div>
             <div class="recComment--status">
-              <p>必要人数:{{rec.requirednumber}}</p>
-              <p>必要時間:{{rec.rectime}}</p>
+              <p><i class="fas fa-user-circle"></i>{{rec.requirednumber}}</p>
+              <p><i class="fas fa-clock"></i>{{rec.rectime}}</p>
             </div>
             <div class="recComment--text">{{rec.recComment}}</div>
           </div>

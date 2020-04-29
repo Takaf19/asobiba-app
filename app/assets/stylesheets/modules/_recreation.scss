@@ -127,7 +127,7 @@ html, body{
   padding: 3px;
   &__nothing {
     height: 390px;
-    background-color: white;
+    background-color: rgba(white, 0.9);
     box-shadow: 0 0 5px 3px lightgray;
     padding: 10px;
     & .text {
@@ -153,7 +153,7 @@ html, body{
     justify-content: space-between;
     padding: 5px;
     height: 120px;
-    background-color: white;
+    background-color: rgba(white, 0.9);
     border: 1px solid darkgray;
     & .recImage {
       width: 40%;
@@ -178,12 +178,24 @@ html, body{
       }
       &--updateDate {
         position: absolute;
-          top: 10px;
+          top: 5px;
           left: 10px;
         font-size: 0.8em;
         max-height: 100%;
         color: darkcyan;
         text-shadow: 1px 1px white;
+      }
+      &--bookmark {
+        position: absolute;
+          bottom: 5px;
+          right: 10px;
+        font-size: 0.8em;
+        max-height: 100%;
+        color: darkcyan;
+        text-shadow: 1px 1px white;
+        > i {
+          color: rgb(255, 196, 0);
+        }
       }
     }
     & .recComment {
@@ -202,6 +214,13 @@ html, body{
         font-size: 0.7em;
         display: flex;
         border-bottom: solid 1px darkcyan;
+        > p {
+          margin-right: 10px;
+          font-size: 0.9em;
+          > i {
+            color: cadetblue;
+          }
+        }
       }
     }
     > a {
