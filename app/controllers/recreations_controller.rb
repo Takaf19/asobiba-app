@@ -9,7 +9,7 @@ class RecreationsController < ApplicationController
   end
 
   def show
-    @recreation = Recreation.includes(:explanations, :user).find(params[:id])
+    @recreation = Recreation.includes(:explanations, :user, :bookmarks).find(params[:id])
   end
 
   def new
