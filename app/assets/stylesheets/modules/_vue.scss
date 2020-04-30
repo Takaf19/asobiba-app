@@ -1,7 +1,7 @@
 /* トップページのアニメーション */
 /* 開始時 */
 .slide-enter {
-  transform: translate(0px, 0);
+  transform: translate(-300px, 0);
   opacity: 0;
 }
 /* 終了時 */
@@ -10,7 +10,7 @@
 }
 /* アニメーション実行中 */
 .slide-enter-active {
-  transition: all .5s 0.4s ease;
+  transition: all .5s 0s ease;
 }
 .slide-leave {
   transform: translate(0, 0);
@@ -21,7 +21,7 @@
   opacity: 0;
 }
 .slide-leave-active {
-  transition: all .4s 0s ease;
+  transition: all .3s 0s ease;
 }
 
 
