@@ -7,16 +7,20 @@
           <img src="assets/asobiba-logo.png" class="topHedder__imgBox--logo" />
           <p class="top-imgBox1--title">— みんなの”あそび”を集めよう —</p>
         </div>
-        <div class="topHedder__imgBox" id="top-imgBox2">
-          <a v-bind:href="'/recreations/' + 1" >
-            <img src="assets/NoImage.png" class="topHedder__imgBox--backImage" />
+        <div class="topHedder__imgBox" id="top-imgBox2true"  v-if="randomMath()">
+          <a v-bind:href="'/recreations/' + recreations[index].id" class="top-imgBox2--image" >
+            <video :src="recreations[index].recimage.url" autobuffer class="topHedder__imgBox--backImage"  v-if="setImageType(recreations[index].recimageType)" />
+            <img :src="recreations[index].recimage.url" class="topHedder__imgBox--backImage" v-else />
             <div class="top-recInfo">
-              <p class="top-imgBox--rectitle">タイトル</p>
+              <p class="top-imgBox--rectitle">{{ recreations[index].recname }}</p>
               <div class="top-likeCount">
-                <p><i class="fas fa-star"></i>10</p>
+                <p><i class="fas fa-star"></i>{{ recreations[index].bookmark }}</p>
               </div>
             </div>
           </a>
+        </div>
+        <div class="topHedder__imgBox" id="top-imgBox2"  v-else >
+          <img src="assets/asobi-click.png" class="topHedder__imgBox--backImage" />
         </div>
       </div>
       <div id="recTabs">
@@ -127,7 +131,8 @@ export default {
       tabNew: true,
       tabPopular: false,
       tabCreate: false,
-      i: 0
+      i: 0,
+      index: 0
     };
   },
   created: function() {
@@ -171,6 +176,14 @@ export default {
         return true;
       }
     },
+    randomMath() {
+      if (this.recreations.length == 0) {
+        return false
+      } else {
+        this.index = Math.floor( Math.random() * this.recreations.length );
+        return true
+      }
+    }
   }
 };
 </script>
