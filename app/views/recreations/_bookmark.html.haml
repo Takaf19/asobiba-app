@@ -1,0 +1,20 @@
+-if @recreation.user_id == 2
+  .item
+    %span お気に入り数
+    .like-count
+      =icon("fas", "star")
+      = @recreation.bookmarks.length
+
+-else
+  - if @recreation.bookmark_by?(current_user)
+    = link_to  recreation_bookmarks_path(@recreation.id), method: :delete, remote: true, class:"item bookmarkbtn" do
+      %span お気に入り削除
+      .like-count
+        =icon("fas", "star")
+        = @recreation.bookmarks.length
+  -else 
+    =link_to  recreation_bookmarks_path(@recreation.id), method: :post, remote: true, class:"item bookmarkbtn" do
+      %span お気に入り追加！
+      .like-count
+        =icon("fas", "star")
+        = @recreation.bookmarks.length

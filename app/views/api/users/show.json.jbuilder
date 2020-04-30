@@ -14,6 +14,7 @@ json.set! :recreations do
     json.requirednumber rec.requirednumber.name
     json.rectime rec.rectime.item
     json.updated_at rec.updated_at.to_s
+    json.bookmark rec.bookmarks.length
   end
 end
 
@@ -28,5 +29,6 @@ json.set! :bookmarks do
     json.requirednumber book.recreation.requirednumber.name
     json.rectime book.recreation.rectime.item
     json.updated_at book.recreation.updated_at.to_s
+    json.bookmark book.recreation.bookmarks.length
   end
 end

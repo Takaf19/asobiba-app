@@ -2,6 +2,8 @@
   #recShow
     .title 
       = @recreation.recname
+    #bookmarkBtn
+      = render partial: 'recreations/bookmark', locals: { product: @recreation }
 
     .Show-imageBox
       -if @recreation.recimageType == "動画"
@@ -9,18 +11,16 @@
       -else
         = image_tag @recreation.recimage.url, class: "Show-imageBox--titeImage"
 
-    .like-count
-      =icon("fas", "star")
-      = @recreation.bookmarks.length
-
     .field
       .show-label
         %p どんなあそび？
         .required
           .required--item
-            = "必要人数 : #{@recreation.requirednumber.name}"
+            = icon("fas", "user-circle")
+            = @recreation.requirednumber.name
           .required--item
-            = "必要時間 : #{@recreation.rectime.item}"
+            = icon("fas", "clock")
+            = @recreation.rectime.item
       .textareabox
         = @recreation.recComment
 
@@ -42,5 +42,7 @@
             = item.recText
 
     %br
-    .recFormBtn.submit.likeBtn お気に入りに登録
+    -if @recreation.user_id == current_user.id
+      .recFormBtn.submit.editBtn 内容を編集する 
+    
     = link_to  "戻る", 'javascript:history.back()', class:"back recFormBtn"

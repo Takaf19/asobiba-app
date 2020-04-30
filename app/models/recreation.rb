@@ -17,4 +17,9 @@ class Recreation < ApplicationRecord
 
   enum recimageType: [ "画像", "動画" ]
 
+
+  #すでにお気に入り済みか判定
+  def bookmark_by?(user)
+    bookmarks.where(user_id: user.id).exists?
+  end
 end

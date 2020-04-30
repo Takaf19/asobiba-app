@@ -13,11 +13,11 @@
     border-bottom: $topTabsBorder;
   }
   .Show-imageBox {
-    width: calc(100% - 4px);
+    width: 100%;
     padding-top: 55%;
     background-color: gray;
     border: dashed 3px cadetblue;
-    margin: 0 auto;
+    margin: 0 auto 50px;
     position: relative;
     &--titeImage {
       position: absolute;
@@ -33,13 +33,6 @@
       width:100%;
       height:100%;
     }
-  }
-  & .like-count {
-    text-align: right;
-    > i {
-      color: rgb(255, 187, 0);
-    }
-    margin-bottom: 20px;
   }
   & .field {
     width: 100%;
@@ -67,7 +60,7 @@
         &--item {
           padding: 2px 15px;
           margin-right: 10px;
-          font-size: 1em;
+          font-size: 0.8em;
           border-radius: 10px;
           background-color: rgba(#71dbfc, 0.8);
           font-style:italic;
@@ -192,4 +185,46 @@
     font-weight: 100;
     outline: none;
   }
+}
+
+// お気に入り機能
+#bookmarkBtn {
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+  & .item {
+    background-color: cadetblue;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    min-width: 220px;
+    & span {
+      margin-right: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    & .like-count {
+      > i {
+        color: rgb(255, 187, 0);
+      }
+    }
+  }
+  & .bookmarkbtn {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    &:hover > span {
+      animation: pyon 0.5s ease-in;
+    }
+  }
+}
+
+@keyframes pyon {
+  0% {top : 0}
+  10% {
+    transform: scale(1.1, 0.4);
+  }
+  80% {top:-5px;
+    transform: scale(1, 1.1);}
+  100%{top: 0;}
 }

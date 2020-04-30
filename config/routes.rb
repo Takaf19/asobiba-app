@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     resources :recreations, only: [ :new ]
   end
 
-  resources :recreations, only: [ :index, :show, :new, :create ]
+  resources :recreations, only: [ :index, :show, :new, :create ] do
+    resource :bookmarks, only:[:create, :destroy]
+  end
+  
   resources :images, only: [ :create ]
 
   namespace :api do

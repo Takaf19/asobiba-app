@@ -23,7 +23,7 @@
   &-main {
     max-height: 400px;
     overflow: scroll;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.8);
   }
   &--count {
     color: rgba(255, 255, 255, 0.8);
@@ -74,11 +74,11 @@
 .recList-main__contents {
   padding: 5px 10px;
   &--content {
+    background-color: white;
     display: flex;
     justify-content: space-between;
     padding: 5px;
     height: 120px;
-    background-color: white;
     border: 1px solid darkgray;
     & .recImage {
       width: 40%;
@@ -103,12 +103,24 @@
       }
       &--updateDate {
         position: absolute;
-          top: 10px;
+          top: 5px;
           left: 10px;
         font-size: 0.8em;
         max-height: 100%;
         color: darkcyan;
         text-shadow: 1px 1px white;
+      }
+      &--bookmark {
+        position: absolute;
+          bottom: 5px;
+          right: 10px;
+        font-size: 0.8em;
+        max-height: 100%;
+        color: darkcyan;
+        text-shadow: 1px 1px white;
+        > i {
+          color: rgb(255, 196, 0);
+        }
       }
     }
     & .recComment {
@@ -126,6 +138,9 @@
         border-bottom: solid 1px darkcyan;
         > p {
           margin-right: 10px;
+          > i {
+            color: cadetblue;
+          }
         }
       }
       &--text {
