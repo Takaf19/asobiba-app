@@ -12,18 +12,16 @@
     .hedder
       = link_to root_path,class:"topHedder__logo" do
         =image_tag "asobiba-logo.png", height:"50px"
-      - if user_signed_in?
-        .hedder__item
-          .hedder__item--icons
+      .hedder__item
+        .hedder__item--icons
+          - if user_signed_in?
             = link_to user_path(current_user.id), class:"hedderBtn", id:"myPageBtn" do
               = icon("fas", "user")
             = link_to new_recreation_path, class:"hedderBtn", id:"recCreateBtn" do
               = icon("fas", "lightbulb")
             = link_to destroy_user_session_path, class:"hedderBtn", id:"logOutBtn", method: :delete do
               = icon("fas", "sign-out-alt")
-      -else
-        .hedder__item
-          .hedder__item--icons
+          -else
             = link_to new_user_registration_path, class:"hedderBtn", id:"userNewtBtn" do
               = icon("far", "user-circle")
             = link_to user_session_path, class:"hedderBtn", id:"logInBtn" do

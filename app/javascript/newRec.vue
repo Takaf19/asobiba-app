@@ -7,7 +7,7 @@
           <img src="assets/asobiba-logo.png" class="topHedder__imgBox--logo" />
           <p class="top-imgBox1--title">— みんなの”あそび”を集めよう —</p>
         </div>
-        <div class="topHedder__imgBox" id="top-imgBox2true"  v-if="randomMath()">
+        <div class="topHedder__imgBox" id="top-imgBox2true"  v-if="randomMath(recreations.length)">
           <a v-bind:href="'/recreations/' + recreations[index].id" class="top-imgBox2--image" >
             <video :src="recreations[index].recimage.url" autobuffer class="topHedder__imgBox--backImage"  v-if="setImageType(recreations[index].recimageType)" />
             <img :src="recreations[index].recimage.url" class="topHedder__imgBox--backImage" v-else />
@@ -41,6 +41,10 @@
           <div v-bind:is="component" :recreations="recreations" :populars="populars"></div>
         </transition>
       </div>
+      
+      <router-link to='/recreations/allNewRecreasions' id="allNewRecbtn" class="allRec" >
+        あそびを全件表示
+      </router-link>
     </div>
   </div>
 </template>
@@ -112,14 +116,28 @@ export default {
         return true;
       }
     },
-    randomMath() {
-      if (this.recreations.length == 0) {
+    randomMath(max) {
+      if (max == 0) {
         return false
       } else {
-        this.index = Math.floor( Math.random() * this.recreations.length );
+        this.index = Math.floor( Math.random() * max );
         return true
       }
     }
   }
 };
 </script>
+
+<style scoped>
+  .allRec {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    width: 95%;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: rgba(95, 158, 160, 0.9);
+    color: white;
+  }
+</style>
