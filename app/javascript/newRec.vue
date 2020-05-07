@@ -129,15 +129,5 @@ export default {
 </script>
 
 <style scoped>
-  .allRec {
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    width: 95%;
-    padding: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    background-color: rgba(95, 158, 160, 0.9);
-    color: white;
-  }
+
 </style>
