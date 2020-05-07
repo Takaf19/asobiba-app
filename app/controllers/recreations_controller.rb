@@ -26,6 +26,9 @@ class RecreationsController < ApplicationController
     redirect_to root_path
   end
 
+  def allNewRecreasions
+  end
+
   private 
   def rec_params
       # 子要素のstrong parameterを書くことで、自動で子要素に親要素のidもふられる。explanatinテーブルにあるrecreation_idに親要素のidがふられます。
