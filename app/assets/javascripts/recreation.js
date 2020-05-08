@@ -108,9 +108,9 @@ function textareaImageView() {
   imageBox.style.display="block";
 }
 
-if(document.URL.match("recreations/new")){
+// if(document.URL.match("recreations/new")){
 
-}
+// }
 // function scrollRecTab() {
 //   let element = event.target.parentNode; // 移動させたい位置の要素を取得
 //   // let rect = element.getBoundingClientRect();

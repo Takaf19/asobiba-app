@@ -208,3 +208,8 @@ let fileIndex = [1, 2, 3, 4];
 
     };
   };
+
+function backBtnClick() { 
+  let backURL = document.referrer;
+  window.location.href = backURL;
+};
