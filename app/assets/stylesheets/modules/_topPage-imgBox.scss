@@ -8,7 +8,7 @@
     position: relative;
     height: 100%;
     opacity: 0;
-    animation  : bgAnime 12s infinite;
+    animation  : bgAnime 18s infinite;
     &--logo {
       position: absolute;
         top: 20px;
@@ -92,6 +92,17 @@
   pointer-events: none;
 }
 
+#top-imgBox3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  animation-delay  : 12s;
+  pointer-events: none;
+}
+
 
 // Newをつける
 .topHedder__imgBox#top-imgBox2true:before {
@@ -122,10 +133,10 @@
 @keyframes bgAnime {
   0% { opacity: 0; }
  10% { opacity: 1; }
- 25% { 
+ 20% { 
   opacity: 1; 
   pointer-events: auto;
 }
- 60% { opacity: 0; }
+ 50% { opacity: 0; }
 100% { opacity: 0; }
 }

@@ -62,7 +62,7 @@
 }
 /* アニメーション実行中 */
 .fade-enter-active {
-  transition: all .4s 0s ease-in;
+  transition: all .2s 0s ease-in;
 }
 .fade-leave {
   opacity: 1;
@@ -71,5 +71,5 @@
   opacity: 0;
 }
 .fade-leave-active {
-  transition: all .2s 0s ease-in;
+  transition: all .1s 0s ease-in;
 }

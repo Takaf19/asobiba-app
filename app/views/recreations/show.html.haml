@@ -45,4 +45,4 @@
     -if @recreation.user_id == current_user.id
       .recFormBtn.submit.editBtn 内容を編集する 
     
-    = link_to  "戻る", 'javascript:history.back()', class:"back recFormBtn"
+    .back.recFormBtn{onclick:"backBtnClick()"}戻る

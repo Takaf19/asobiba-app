@@ -22,6 +22,9 @@
         <div class="topHedder__imgBox" id="top-imgBox2"  v-else >
           <img src="assets/asobi-click.png" class="topHedder__imgBox--backImage" />
         </div>
+        <div class="topHedder__imgBox" id="top-imgBox3">
+          <img src="assets/asobi-click.png" class="topHedder__imgBox--backImage" />
+        </div>
       </div>
       <div id="recTabs">
         <div class="tab" id="tabs-new" 

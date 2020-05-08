@@ -12,6 +12,10 @@
             v-if="setImageType(rec.recimageType)"
           />
           <img v-bind:id=" 'front' + index" class="image_b" :src="rec.recimage.url" v-else />
+          <div class="imagebox--bookmark">
+            <i class="fas fa-star"></i>
+            {{rec.bookmark}}
+          </div>
         </div>
         <div class="contents" :id="'contents' + index">
           <div class="contents__title">
@@ -77,8 +81,8 @@ export default {
 
             window.setTimeout(function() {
               this.startAnimation(width, height, margin, i );
-            }.bind(this),200 + 50 * i);
-          }.bind(this),1000 + 200 * i
+            }.bind(this),100 * i);
+          }.bind(this),50 * i
         );
       }
     },
@@ -291,6 +295,23 @@ export default {
   margin: 0 auto;
   background: rgba(125, 125, 126, 0.8);
   opacity: 0;
+}
+
+.imagebox--bookmark {
+  position: absolute;
+    top: 0;
+    left: 0px;
+  z-index: 9;
+  color:rgb(56, 55, 55);
+  padding: 0 10px;
+  text-shadow: 1px 2px white;
+  background: rgba(247, 247, 250, 0.7);
+  border-radius: 0px 0px 3px 0px;
+}
+
+
+.imagebox--bookmark > i {
+  color: gold;
 }
 
 .contents {
