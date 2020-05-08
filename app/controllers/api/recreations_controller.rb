@@ -3,7 +3,8 @@ class Api::RecreationsController < ApplicationController
   def index
     @recreations = Recreation.includes(:bookmarks).all.order(updated_at: "DESC").limit(10)
     # ブックマーク数上位１０件の記事を降順に並び替え
-    @popular = Recreation.find(Bookmark.group(:recreation_id, :updated_at).order("count(recreation_id) DESC", updated_at: "DESC").limit(10).pluck(:recreation_id))
+    bookmark = Bookmark.joins(:recreation).includes(:recreation)
+    @popular = Recreation.find(bookmark.group(:recreation_id).order("count(recreation_id) desc","recreations.updated_at DESC").limit(10).pluck(:recreation_id))
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
 
