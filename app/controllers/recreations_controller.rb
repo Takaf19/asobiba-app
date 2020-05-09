@@ -1,4 +1,5 @@
 class RecreationsController < ApplicationController
+  before_action :login_check, only: [:new, :allNewRecreasions]
 
   def index
     @user = current_user

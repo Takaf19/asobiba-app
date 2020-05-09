@@ -10,4 +10,5 @@ class User < ApplicationRecord
 
   validates :nickname, :email, presence: true
   mount_uploader :user_image, ImageUploader
+
 end
