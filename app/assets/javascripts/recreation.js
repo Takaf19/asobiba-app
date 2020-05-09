@@ -106,12 +106,12 @@ function textareaImageView() {
   if (preview === false) return false;
   selectImage(preview, textareafile)
   imageBox.style.display="block";
-}
+};
 
 // フラッシュメッセージスライドアップで隠す
-jQuery(function(){
-  setTimeout("jQuery('.notifications').slideUp('slow')", 4000) 
-})
+$(function() {
+  setTimeout("$('.notifications').slideUp('slow')", 4000);
+});
 // if(document.URL.match("recreations/new")){
 
 // }
