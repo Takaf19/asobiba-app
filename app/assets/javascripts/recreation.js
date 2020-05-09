@@ -109,9 +109,9 @@ function textareaImageView() {
 }
 
 // フラッシュメッセージスライドアップで隠す
-// jQuery(function(){
-//   setTimeout("jQuery('.notifications').slideUp('slow')", 4000) 
-// })
+jQuery(function(){
+  setTimeout("jQuery('.notifications').slideUp('slow')", 4000) 
+})
 // if(document.URL.match("recreations/new")){
 
 // }
