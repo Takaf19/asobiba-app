@@ -15,7 +15,7 @@ html, body{
 }
 
 .hedder {
-  padding: 10px 30px;
+  padding: 0 20px;
   height: $hedder-height;
   pointer-events: none;
   position: fixed;
@@ -25,10 +25,12 @@ html, body{
   display: flex;
   justify-content: space-between;
   & .topHedder__logo {
+    padding: 10px 0;
     pointer-events: auto;
   }
   &__item {
     pointer-events: auto;
+    padding: 10px 0;
     &--icons {
       display: flex;
       justify-content: space-between;
@@ -80,7 +82,6 @@ html, body{
 }
 
 #mainContents {
-  width: 60%;
   min-width: 450px;
   max-width: 800px;
   margin: 0 auto;
