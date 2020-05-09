@@ -136,7 +136,7 @@
       }
     }
   }
-  & .recFormBtn {
+  .recFormBtn {
     display: inline-block;
     margin: 10px auto;
     width: 100%;
@@ -146,17 +146,37 @@
     font-size: 0.9em;
     line-height: 50px;
   }
-  & .submit{
-    background-color: cadetblue;
-    border: none;
-    outline: none;
-    appearance: none;
-    margin-top: 50px;
-
-  }
-  & .back{
+  & .back {
+    margin-top: 30px;
     background-color: gray;
     text-decoration: none;
+  }
+  & .userEditform {
+    width: 100%;
+    margin: 70px auto 20px;
+    border-top: dashed 2px rgb(46, 45, 45);
+    > p {
+      margin: 10px auto 30px;
+      color: rgb(61, 60, 60);
+      font-weight: bold;
+    }
+    &--btns {
+      display: flex;
+      justify-content: space-between;
+      & .submit{
+        margin: 0 5px;
+        font-size: 0.9em;
+        > p {
+        }
+      }
+      #editBtn {
+        background-color: cadetblue;
+        
+      }
+      #DeleteBtn {
+        background-color: rgb(217, 138, 219);
+      }
+    }
   }
 }
 

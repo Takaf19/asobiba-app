@@ -42,7 +42,13 @@
             = item.recText
 
     %br
-    -if @recreation.user_id == current_user.id
-      .recFormBtn.submit.editBtn 内容を編集する 
-    
     .back.recFormBtn{onclick:"backBtnClick()"}戻る
+
+    -if user_signed_in? && @recreation.user_id == current_user.id
+      .userEditform
+        %p 投稿者様専用フォーム
+        .userEditform--btns
+          .recFormBtn.submit#editBtn 
+            %p 内容を編集
+          .recFormBtn.submit#DeleteBtn 
+            %p あそびを削除
