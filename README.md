@@ -94,9 +94,10 @@ Vue.jsにjson形式で渡すことで、非同期でのデータ表示を行う�
 |nickname|string|null: false|
 |email|string|null: false, default: ""|
 |user_image|text|null: false|
+|is_deleted|boolean|null: false, default: false|
 
 ### Association
-- has_many :recreations, dependent: :destroy
+- has_many :recreations
 - has_many :bookmarks, dependent: :destroy
 - has_many :recreations, through: :bookmarks, source: :recreation_id
 

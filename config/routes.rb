@@ -28,6 +28,10 @@ Rails.application.routes.draw do
         get :allNewRec
       end
     end
-    resources :users, only:[:show]
+    resources :users, only:[:show, :update, :destroy] do
+      member do
+        patch :accountDeletion
+      end
+    end
   end
 end

@@ -10,11 +10,15 @@
       <div class="side-bar--link" @click = "selectPage(2)" v-bind:class="{'active': pages[2]}" >
         <p>投稿一覧</p>
       </div>
+      <div class="side-bar--link" @click = "selectPage(3)" v-bind:class="{'active': pages[3]}" >
+        <p>退会</p>
+      </div>
     </div>
     <div id="myPage-Pages">
       <!-- <profile /> -->
       <transition mode="out-in" name="myPageslide">
-        <div v-bind:is="component" :user="user" :recreations="recreations" :bookmarks="bookmarks"></div>
+        <div v-if="pages[3]" v-bind:is="component" :user="user"></div>
+        <div v-else v-bind:is="component" :user="user" :recreations="recreations" :bookmarks="bookmarks"></div>
       </transition>
     </div>
   </div>
@@ -24,18 +28,20 @@
 import Profile from "./myPage/profile.vue";
 import LikeList from "./myPage/likeList.vue";
 import RecList from "./myPage/recList.vue";
+import AccountDeletion from "./myPage/account_deletion.vue";
 import axios from "axios";
 export default {
   components: {
     profile: Profile,
     likeList: LikeList,
     recList: RecList,
+    accountDeletion: AccountDeletion,
   },
   data: function() {
     return {
-    componentTypes: ["profile", "likeList","recList"],
+    componentTypes: ["profile", "likeList","recList","accountDeletion"],
     current: 0,
-    pages: [true,false,false],
+    pages: [true,false,false,false],
     user: Object,
     recreations:[],
     bookmarks: [],

@@ -37,9 +37,12 @@ import App from '../app.vue'
 import Footer from '../footer.vue'
 import Router from "./router";
 import UserShow from '../userShow.vue'
+import axios from "axios"; 
+import VueAxiosPlugin from "./plugins/vue-axios";
 
 
 Vue.use(VueRouter)
+Vue.use(VueAxiosPlugin, { axios: axios })
 Vue.config.productionTip = false
 
 document.addEventListener('DOMContentLoaded', () => {
