@@ -108,6 +108,10 @@ function textareaImageView() {
   imageBox.style.display="block";
 }
 
+// フラッシュメッセージスライドアップで隠す
+$(function(){
+  setTimeout("$('.notifications').slideUp('slow')", 4000) 
+})
 // if(document.URL.match("recreations/new")){
 
 // }

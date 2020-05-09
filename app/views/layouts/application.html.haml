@@ -9,6 +9,7 @@
     = javascript_include_tag 'application'
   
   %body
+    = render 'layouts/flash'
     .hedder
       = link_to root_path,class:"topHedder__logo" do
         =image_tag "asobiba-logo.png", height:"50px"
