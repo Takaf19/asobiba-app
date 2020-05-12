@@ -7,7 +7,7 @@ class Api::RecreationsController < ApplicationController
     @popular = Recreation.find(bookmark.group(:recreation_id, "recreations.updated_at").order("count(recreation_id) desc","recreations.updated_at DESC").limit(10).pluck(:recreation_id))
     render 'index', formats: 'json', handlers: 'jbuilder'
   end
-
+  
   def allNewRec
     @recreations = Recreation.includes(:bookmarks).all.order(updated_at: "DESC")
     bookmark = Bookmark.joins(:recreation).includes(:recreation)

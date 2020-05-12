@@ -17,6 +17,7 @@ class RecreationsController < ApplicationController
     @recreation = Recreation.new
     explanation = @recreation.explanations.build
     explanation.build_image
+
   end
 
   def create
@@ -27,7 +28,16 @@ class RecreationsController < ApplicationController
     redirect_to root_path
   end
 
-  def allNewRecreasions
+  def destroy
+    rec = Recreation.find_by(params[:id])
+    if rec.destroy
+      flash[:notice] = "あそびの削除が完了しました。"
+      redirect_to root_path
+    else
+      @recreation = Recreation.includes(:explanations, :user, :bookmarks).find(params[:id])
+      flash.now[:alert] = 'あそびの削除に失敗しました。'
+      render :show
+    end
   end
 
   private 
