@@ -9,7 +9,6 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/', component: newRec },
   { path: '/recreations/allNewRecreasions', name: "allNewRec", component: AllNewRec },
-  // { path: '/allPopularRecreasions', component: AllRecShow },
   { path: '/users/:id', component: UserShow },
 ]
 

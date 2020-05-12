@@ -46,9 +46,9 @@
 
     -if user_signed_in? && @recreation.user_id == current_user.id
       .userEditform
-        %p 投稿者様専用フォーム
+        %p 投稿ユーザー専用
         .userEditform--btns
           .recFormBtn.submit#editBtn 
             %p 内容を編集
-          .recFormBtn.submit#DeleteBtn 
+          =link_to  recreation_path(@recreation.id), class:"recFormBtn submit", id:"DeleteBtn", method: :delete, data: { confirm: 'あそびの削除を実行します。' } do
             %p あそびを削除

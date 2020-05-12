@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :recreations, only: [ :new ]
   end
 
-  resources :recreations, only: [ :index, :show, :new, :create ] do
+  resources :recreations, only: [ :index, :show, :new, :create, :destroy ] do
     resource :bookmarks, only:[:create, :destroy]
     collection do
       get :allNewRecreasions
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :images, only: [ :create ]
 
   namespace :api do
-    resources :recreations, only:[:index, :new, :create] do
+    resources :recreations, only:[:index] do
       collection do
         get :allNewRec
       end

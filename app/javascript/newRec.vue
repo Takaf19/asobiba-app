@@ -48,6 +48,7 @@
       <router-link to='/recreations/allNewRecreasions' id="allNewRecbtn" class="allRec" >
         あそびを全件表示
       </router-link>
+      
     </div>
   </div>
 </template>

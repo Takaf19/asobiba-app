@@ -145,6 +145,7 @@
     cursor: pointer;
     font-size: 0.9em;
     line-height: 50px;
+    text-decoration: none;
   }
   & .back {
     margin-top: 30px;
@@ -157,7 +158,7 @@
     border-top: dashed 2px rgb(46, 45, 45);
     > p {
       margin: 10px auto 30px;
-      color: rgb(61, 60, 60);
+      color: rgb(87, 85, 85);
       font-weight: bold;
     }
     &--btns {
@@ -174,7 +175,7 @@
         
       }
       #DeleteBtn {
-        background-color: rgb(217, 138, 219);
+        background-color: rgb(225, 171, 226);
       }
     }
   }

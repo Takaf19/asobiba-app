@@ -97,6 +97,8 @@
        left: 0;
      z-index: 1;
      text-align: left;
+     color: rgb(87, 86, 86);
+     font-size: 0.9em;
    }
   .accountDeletion__main--attention span {
     color: red;
@@ -105,7 +107,7 @@
   .accountDeletion-btn {
     cursor: pointer;
     position: absolute;
-      bottom: 10px;
+      bottom: 20px;
       left: 30px;
       right: 30px;
     background-color: cadetblue;
