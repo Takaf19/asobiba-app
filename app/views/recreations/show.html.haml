@@ -48,7 +48,7 @@
       .userEditform
         %p 投稿ユーザー専用
         .userEditform--btns
-          .recFormBtn.submit#editBtn 
+          =link_to  edit_recreation_path(@recreation.id), class:"recFormBtn submit", id:"editBtn" do
             %p 内容を編集
           =link_to  recreation_path(@recreation.id), class:"recFormBtn submit", id:"DeleteBtn", method: :delete, data: { confirm: 'あそびの削除を実行します。' } do
             %p あそびを削除

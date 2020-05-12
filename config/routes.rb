@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :recreations, only: [ :new ]
   end
 
-  resources :recreations, only: [ :index, :show, :new, :create, :destroy ] do
+  resources :recreations do
     resource :bookmarks, only:[:create, :destroy]
     collection do
       get :allNewRecreasions

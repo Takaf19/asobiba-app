@@ -5,7 +5,7 @@
         あそび情報の入力
         <i class="fas fa-pencil-alt"></i>
       </div>
-      <form enctype="multipart/form-data" action="/recreations" accept-charset="UTF-8" method="post" >
+      <form accept-charset="UTF-8">
         <div class="field">
           <div class="field--label">
             <label clas="reclabel" for="recreation_recimage">タイトル画像/動画</label>
@@ -21,7 +21,7 @@
               </div>
               <img class="file-preview" />
               <video autobuffer controls="controls" class="file-preview"></video>
-              <input required="required" onchange="titleImageView(this)" type="file"
+              <input @change="onDrop" required="required" onchange="titleImageView(this)" type="file"
                      name="recreation[recimage]" id="recreation_recimage" class="filebox" />
             </div>
           </label>
@@ -117,9 +117,37 @@
         </div>
         <input type="submit" name="commit" value="登録する" data-disable-with="登録する" class="submit recFormBtn" />
         <br />
-        <div onclick="backBtnClick()" class="back recFormBtn">戻る</div>
+        <button type="button" onclick="backBtnClick()" class="back recFormBtn">戻る</button>
       </form>
     </div>
   </div>
 </template>
 
+<script>
+  import axios from 'axios';
+  export default {
+    data: function() {
+      return {
+        recreation: {
+          recname: '',
+          recimage: '',
+          publisher: '',
+          genre: ''
+        }
+      }
+    },
+    methods: {
+      createBook: function () {
+        if (!this.recreation.recname) return;
+        axios.post('/api/books', { book: this.recreation }).then((res) => {
+          this.$router.push({ path: '/' });
+        }, (error) => {
+          console.log(error);
+        });
+      },
+      onDrop:function(event){
+        this.recreation.recimage = event.target.files
+      }   
+    }
+  }
+</script>

@@ -1,14 +1,6 @@
 class RecreationsController < ApplicationController
   before_action :login_check, only: [:new, :allNewRecreasions]
 
-  def index
-    @user = current_user
-    @image = Image.new
-    @images = Image.all
-    @recreations = Recreation.all
-    @recreation = Recreation.new
-  end
-
   def show
     @recreation = Recreation.includes(:explanations, :user, :bookmarks).find(params[:id])
   end
@@ -22,10 +14,26 @@ class RecreationsController < ApplicationController
 
   def create
     # 親要素を保存かけてあげることで自動で子要素も保存される！
+    binding.pry
     recreation = Recreation.new(rec_params)
     recreation.recimageType = imageType(recreation)
     recreation.save
     redirect_to root_path
+  end
+
+  def edit
+    @recreation = Recreation.find_by(id: params[:id])
+  end
+
+  def update
+    # if params.require(:recreation).permit(:recimage).nil?
+    # end
+    @recreation = Recreation.find_by(id: params[:id])
+    if @recreation.update(rec_params)
+      render :show
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -43,7 +51,7 @@ class RecreationsController < ApplicationController
   private 
   def rec_params
       # 子要素のstrong parameterを書くことで、自動で子要素に親要素のidもふられる。explanatinテーブルにあるrecreation_idに親要素のidがふられます。
-      params.require(:recreation).permit(:recname, :recimage, :recComment, :requirednumber_id, :rectime_id, explanations_attributes: [:recText, :_destroy, image_attributes: [:imgurl, :_destroy]]).merge(user_id: current_user.id)
+      params.require(:recreation).permit(:id, :recname, :recimage, :recComment, :requirednumber_id, :rectime_id, explanations_attributes: [:id, :recText, :_destroy, image_attributes: [:id, :imgurl, :_destroy]]).merge(user_id: current_user.id)
   end
 
   def imageType(target)
