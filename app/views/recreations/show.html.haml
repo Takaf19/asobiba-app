@@ -29,9 +29,9 @@
         %p あそび方説明
       -@recreation.explanations.each_with_index do |item, i|
         .textareabox.showTextareaBox
-          -if item.image.present?
+          -if item.imgurl.present?
             .Show-imageBox
-              = image_tag item.image.imgurl.url
+              = image_tag item.imgurl.url
               .show-textlabel= "#{i + 1}"
           -else
             .Show-noImageBox
