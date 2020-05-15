@@ -1,4 +1,8 @@
-let fileIndex = [1, 2, 3, 4];
+let fileIndex = [];
+  // 登録済画像データだけの配列（DB用）
+let delete_images =[];
+  // 登録済みテキストエリア（DB用）
+let delete_textarea =[];
 
   // ＜＜  呼び出し処理  ＞＞ーーーーーーーーーーーーーーーーー
 
@@ -11,10 +15,10 @@ let fileIndex = [1, 2, 3, 4];
     group.id = `${index}`;
     group.style.display = 'none'
 
+    group.appendChild(textareaImgViewCreate(index));
     group.appendChild(textareaPreviewCreate());
     group.appendChild(addinput(index));
     group.appendChild(groupbtn(groups, index));
-    group.appendChild(textareaImgViewCreate(index));
     return group
   }
 
@@ -69,6 +73,7 @@ let fileIndex = [1, 2, 3, 4];
     return addbtn
   };
 
+
   // 削除ボタンを生成する関数
   function removeBtn(index) {
     // テキストフォームの作成
@@ -92,12 +97,13 @@ let fileIndex = [1, 2, 3, 4];
     imageAdd.className = "image-add";
     textareaImageBtn.className = "textareaImageBtn";
     textareaImgAdd.className = "textareaImgAdd textareaImageBtn--item";
-    label.htmlFor = `recreation_explanations_attributes_${index}_image_attributes_imgurl`;
+    label.htmlFor = `recreation_explanations_attributes_${index}_imgurl`;
     
     textBox.type = "file";
     textBox.className = "filebox"
-    textBox.name = `recreation[explanations_attributes][${index}][image_attributes][imgurl]`
-    textBox.id = `recreation_explanations_attributes_${index}_image_attributes_imgurl`
+    textBox.accept = ".png,.jpg,.gif";
+    textBox.name = `recreation[explanations_attributes][${index}][imgurl]`
+    textBox.id = `recreation_explanations_attributes_${index}_imgurl`
     textBox.style.display = "none";
     textBox.addEventListener('change', textareaImageView, false);
     
@@ -108,6 +114,28 @@ let fileIndex = [1, 2, 3, 4];
     imageAdd.appendChild(textareaImageBtn);
     return imageAdd
   }
+
+  // 削除ボタン作成
+  function imgDeleteBtn(target) {
+    if (target.querySelector('.textareaImgDel') != null) return false;
+    let delBtn = document.createElement('div');
+    delBtn.className = "textareaImgDel textareaImageBtn--item"
+    delBtn.textContent = "削除"
+    delBtn.addEventListener('click', textareaImgHidden, false);
+    return delBtn;
+  };
+
+    // 画像変更ボタン
+    function removeBtn(index) {
+      // テキストフォームの作成
+      let removebtn = document.createElement('div');
+      removebtn.className = "recbtn js-remove";
+      removebtn.id = `remove${index}`;
+      removebtn.addEventListener('click', btnClick, false);
+      const text = document.createTextNode("−");
+      removebtn.appendChild(text);
+      return removebtn
+    }
 
   // フェードアウトの処理
   function fadeOut(parent, duration) {
@@ -129,7 +157,17 @@ let fileIndex = [1, 2, 3, 4];
         parent.style.display = 'none';
       }
     });
-  }
+  };
+
+// Delete配列にIDを追加
+  function addDelete() {
+    el = event.target
+    if (el.className == "recbtn js-remove"){
+      delete_textarea.push(el.dataset.index);
+    }else if(el.className == "textareaImgDel textareaImageBtn--item"){
+      delete_images.push(el.dataset.index);
+    };
+  };
   
   // フェードイン
   function fadeIn(node, duration) {
@@ -158,7 +196,7 @@ let fileIndex = [1, 2, 3, 4];
         node.style.opacity = '';
       }
     });
-  }
+  };
 
 
 // ＜＜ クリック時のメイン処理 ＞＞ーーーーーーーーーーーーーーーーー
@@ -209,7 +247,70 @@ let fileIndex = [1, 2, 3, 4];
     };
   };
 
+window.onload = function(){
+  // あそび編集ページ読み込み時
+  let index = []
+  let group = document.getElementsByClassName('js-file_group');
+  let textareaImg = document.getElementsByClassName('textarea-imageBox');
+  let textareaImageBtn = document.getElementsByClassName('textareaImageBtn');
+  let delbtn
+
+  if(document.URL.match(/recreations\/\d{1,}\/edit/)) {
+    // value値を格納
+    for( let i = 0; i < group.length; i++ ) {
+      index.push(document.getElementById('recreation_explanations_attributes_' + i + '_id').value);
+      if (textareaImg[i].style.display == "block") {
+        textareaImg[i].dataset.index = index[i];
+        delbtn = imgDeleteBtn(textareaImageBtn[i])
+        delbtn.addEventListener('click', addDelete, false);
+        delbtn.dataset.index = index[i]
+        textareaImageBtn[i].appendChild(delbtn);
+      };
+    };
+  };
+
+  if(document.URL.match(/recreations\/\d{1,}\/edit/)) {
+    let fileBox = document.getElementsByClassName('textareaFilebox');
+    let deletebtn = document.getElementsByClassName('textareaImgDel');
+    let groupbtn = document.getElementsByClassName('js-file_group--btn');
+
+    for( let i = 0; i < fileBox.length; i++ ) {
+      fileBox[i].addEventListener('change', textareaImageView, false);
+    };
+  
+    for( let i = 0; i < deletebtn.length; i++ ) {
+      deletebtn[i].addEventListener('click', textareaImgHidden, false);
+    };
+
+    // グループにふるIDのセット
+    if (group.length > 1) {
+      for( let i = 0; i < 4; i++ ) {
+        fileIndex.push(group.length+i);
+      };
+
+      // 追加、削除ボタンのセット
+      let groupCount = group.length
+      for( let i = 0; i < groupCount; i++ ) {
+        removebtn = removeBtn(group[i].id);
+        removebtn.dataset.index = index[i]
+        removebtn.addEventListener('click', addDelete, false);
+        groupbtn[i].appendChild(removebtn);
+        if( (i+1) == groupCount && i < 4) {
+          groupbtn[i].appendChild(addBtn());
+        };
+      };
+    } else {
+      fileIndex.splice(0, 0, 1, 2, 3, 4);
+      groupbtn[0].appendChild(removeBtn(group[0].id));
+      groupbtn[0].appendChild(addBtn());
+    };
+  };
+};
+
 function backBtnClick() { 
   let backURL = document.referrer;
   window.location.href = backURL;
 };
+
+
+
