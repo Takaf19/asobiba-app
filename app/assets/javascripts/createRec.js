@@ -281,6 +281,7 @@ function deleteBtn(target) {
   function textareaImageView() {
     e = event.target
     let imageBox = (e.closest('.js-file_group')).querySelector('.textarea-imageBox');
+    let delbtn
     if ( e == null ) { 
       imageBox.style.display="none";
       return false
@@ -294,7 +295,10 @@ function deleteBtn(target) {
     // 画像追加 ＞ 画像変更 にする。
     (e.parentNode).querySelector('p').textContent = '画像変更';
     // 削除ボタンの追加
-    e.closest('.textareaImageBtn').appendChild(imgDeleteBtn(e.closest('.textareaImageBtn')));
+    delbtn = imgDeleteBtn(e.closest('.textareaImageBtn'))
+    if ( delbtn ) {
+      e.closest('.textareaImageBtn').appendChild(delbtn);
+    }
     // 1枚だけ表示する
     textareafile = e.files[0];
     // 画像表示する要素を格納

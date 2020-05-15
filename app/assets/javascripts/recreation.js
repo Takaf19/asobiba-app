@@ -35,16 +35,6 @@ function selectImage(preview, file) {
   fileReader.readAsDataURL(file);
 };
 
-// 削除ボタン作成
-function deleteBtn(target) {
-  if (target.querySelector('.textareaImgDel') != null) return false;
-  let delBtn = document.createElement('div');
-  delBtn.className = "textareaImgDel textareaImageBtn--item"
-  delBtn.textContent = "削除"
-  delBtn.addEventListener('click', textareaImgHidden, false);
-  target.appendChild(delBtn);
-}
-
 // テキストエリアの画像表示非表示
 function textareaImgHidden() {
   e = event.target

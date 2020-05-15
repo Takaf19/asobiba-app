@@ -61,7 +61,7 @@
             .textareaImgAdd.textareaImageBtn--item
               = text_form.label :imgurl do
                 %p 画像追加
-                = text_form.file_field :imgurl, class:"filebox textareaFilebox", MaxLength: 200
+                = text_form.file_field :imgurl, class:"filebox textareaFilebox"
 
         .textarea-imageBox
           .message
@@ -75,7 +75,7 @@
             .textareaImgAdd.textareaImageBtn--item
               = text_form.label :imgurl do
                 %p 画像変更
-                = text_form.file_field :imgurl, class:"filebox textareaFilebox", MaxLength: 200
+                = text_form.file_field :imgurl, class:"filebox textareaFilebox"
 
         .textarea-imageBox{style:"display:block;"}
           .message
