@@ -4,89 +4,46 @@
       あそび情報の編集
       = icon("fas","pencil-alt")
     = form_with(model:@recreation, local: true, id: "recEditForm") do |form|
-      .field
-        .field--label
-          = form.label :recimage, 'タイトル画像/動画', class:"reclabel"
-          %span.require  必須
-          %p (アップロード可能: jpeg png mov mp4)
-          %p ※ブラウザにより動画が表示/再生されない場合があります。
-        = form.label :recimage do
-          .imageBox
-            .message
-              = icon('fas', 'sad-tear')
-              %p No Image.
-            -if @recreation.recimageType == "画像"
-              %img.file-preview{src: @recreation.recimage.url, style:"display:block;"}
-              %video.file-preview{controls: true, autobuffer: true}
-            -else
-              %img.file-preview
-              %video.file-preview{src:@recreation.recimage.url, controls: true, autobuffer: true, style:"display:block;"}
-            = form.file_field :recimage, value: @recreation.recimage, class:"filebox", onchange:"titleImageView(this)"
+      = render partial: 'recreations/recForm', locals: { form: form }
 
-      .field
-        .field--label
-          = form.label :recname, 'あそび名', clas:"reclabel"
-          %span.require  必須
-        = form.text_field :recname, class:"textbox titlebox",placeholder:"20文字まで" , required: true, MaxLength: 20
+      -# .field#textForm
+      -#   .field--label
+      -#     = form.label :rectime_id, 'あそび方説明', clas:"reclabel"
+      -#     %span.require  必須
+      -#     %p 最大５つまで追加可能です。
+      -#   = form.fields_for :explanations do |text_form|
+      -#     .js-file_group{id: "#{text_form.index}"}
+      -#       -if @recreation.explanations[text_form.index].imgurl.blank?
+      -#         .image-add
+      -#           .textareaImageBtn
+      -#             .textareaImgAdd.textareaImageBtn--item
+      -#               = text_form.label :imgurl do
+      -#                 %p 画像追加
+      -#                 = text_form.file_field :imgurl, class:"filebox textareaFilebox", MaxLength: 200
 
-      .field
-        .field--label
-          = form.label :recComment, 'どんなあそび？', clas:"reclabel"
-          %span.require  必須
-        = form.text_area :recComment, class:"textareabox  commentbox", placeholder:"200文字まで", required: true, MaxLength: 200
+      -#         .textarea-imageBox
+      -#           .message
+      -#             = icon('fas', 'sad-tear')
+      -#             %p No Image.
+      -#           %img.text-imagePreview
+      -#           %video.text-imagePreview{contorols: true, autobuffer: true, style:"display:none"}
+      -#       -else
+      -#         .image-add
+      -#           .textareaImageBtn
+      -#             .textareaImgAdd.textareaImageBtn--item
+      -#               = text_form.label :imgurl do
+      -#                 %p 画像変更
+      -#                 = text_form.file_field :imgurl, class:"filebox textareaFilebox", MaxLength: 200
 
-      .field
-        .field--label.selectBox
-          = form.label :requirednumber_id, '必要人数', clas:"reclabel"
-          %span.require  必須
-          %br
-          = form.collection_select :requirednumber_id, Requirednumber.all, :id, :name, required: true
-      
-      .field
-        .field--label
-          = form.label :rectime_id, '必要時間', clas:"reclabel"
-          %span.require  必須
-          %br
-          = form.collection_select :rectime_id, Rectime.all, :id, :item, required: true
+      -#         .textarea-imageBox{style:"display:block;"}
+      -#           .message
+      -#             = icon('fas', 'sad-tear')
+      -#             %p No Image.
+      -#           = image_tag @recreation.explanations[text_form.index].imgurl.url, class:"text-imagePreview"
+      -#           %video.text-imagePreview{contorols: true, autobuffer: true, style:"display:none"}
 
-      .field#textForm
-        .field--label
-          = form.label :rectime_id, 'あそび方説明', clas:"reclabel"
-          %span.require  必須
-          %p 最大５つまで追加可能です。
-        = form.fields_for :explanations do |text_form|
-          .js-file_group{id: "#{text_form.index}"}
-            -if @recreation.explanations[text_form.index].imgurl.blank?
-              .image-add
-                .textareaImageBtn
-                  .textareaImgAdd.textareaImageBtn--item
-                    = text_form.label :imgurl do
-                      %p 画像追加
-                      = text_form.file_field :imgurl, class:"filebox textareaFilebox", MaxLength: 200
-
-              .textarea-imageBox
-                .message
-                  = icon('fas', 'sad-tear')
-                  %p No Image.
-                %img.text-imagePreview
-                %video.text-imagePreview{contorols: true, autobuffer: true, style:"display:none"}
-            -else
-              .image-add
-                .textareaImageBtn
-                  .textareaImgAdd.textareaImageBtn--item
-                    = text_form.label :imgurl do
-                      %p 画像変更
-                      = text_form.file_field :imgurl, class:"filebox textareaFilebox", MaxLength: 200
-
-              .textarea-imageBox{style:"display:block;"}
-                .message
-                  = icon('fas', 'sad-tear')
-                  %p No Image.
-                = image_tag @recreation.explanations[text_form.index].imgurl.url, class:"text-imagePreview"
-                %video.text-imagePreview{contorols: true, autobuffer: true, style:"display:none"}
-
-            = text_form.text_area :recText, class: 'textareabox', placeholder:"200文字まで", required: true, MaxLength: 200
-            .js-file_group--btn
+      -#       = text_form.text_area :recText, class: 'textareabox', placeholder:"200文字まで", required: true, MaxLength: 200
+      -#       .js-file_group--btn
 
 
       = form.submit "登録する", class:"submit recFormBtn"

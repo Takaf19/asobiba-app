@@ -13,7 +13,6 @@ let delete_textarea =[];
     let group = document.createElement('div');
     group.className = "js-file_group"
     group.id = `${index}`;
-    group.style.display = 'none'
 
     group.appendChild(textareaImgViewCreate(index));
     group.appendChild(textareaPreviewCreate());
@@ -36,7 +35,7 @@ let delete_textarea =[];
     return imageBox
   }
 
-  // inputを生成する関数
+  // textareaを生成する関数
   const addinput = (index) => {
     // テキストフォームの作成
     let input_data = document.createElement('textarea');
@@ -125,6 +124,17 @@ let delete_textarea =[];
     return delBtn;
   };
 
+  // 削除ボタン作成
+function deleteBtn(target) {
+  if (target.querySelector('.textareaImgDel') != null) return false;
+  let delBtn = document.createElement('div');
+  delBtn.className = "textareaImgDel textareaImageBtn--item"
+  delBtn.textContent = "削除"
+  delBtn.addEventListener('click', textareaImgHidden, false);
+  target.appendChild(delBtn);
+}
+
+
     // 画像変更ボタン
     function removeBtn(index) {
       // テキストフォームの作成
@@ -199,6 +209,27 @@ let delete_textarea =[];
   };
 
 
+  function titleImageView(e) {
+    let imgBox = (e.parentNode).querySelector('img');
+    let videoBox = (e.parentNode).querySelector('img');
+    if ( e == null ) { 
+      return false
+    } else if(e.files.length == 0) {
+      imgBox.src = ""
+      videoBox.src = ""
+      e.value = "";
+      imgBox.style.display="none";
+      videoBox.style.display="none";
+      return false
+    }
+    // 1枚だけ表示する
+    titlefile = e.files[0];
+    // 画像表示する要素を格納
+    let preview = setElement(e.parentNode, titlefile)
+    if (preview === false) return false;
+    selectImage(preview, titlefile)
+  };
+
 // ＜＜ クリック時のメイン処理 ＞＞ーーーーーーーーーーーーーーーーー
   function btnClick() {
     // イベント発火した要素を取得
@@ -247,6 +278,34 @@ let delete_textarea =[];
     };
   };
 
+  function textareaImageView() {
+    e = event.target
+    let imageBox = (e.closest('.js-file_group')).querySelector('.textarea-imageBox');
+    if ( e == null ) { 
+      imageBox.style.display="none";
+      return false
+    } else if (e.files.length == 0) {
+      const targetImg = imageBox.querySelector('img');
+      targetImg.src = ""
+      targetImg.style.display="none";
+      return false
+    }
+    
+    // 画像追加 ＞ 画像変更 にする。
+    (e.parentNode).querySelector('p').textContent = '画像変更';
+    // 削除ボタンの追加
+    e.closest('.textareaImageBtn').appendChild(imgDeleteBtn(e.closest('.textareaImageBtn')));
+    // 1枚だけ表示する
+    textareafile = e.files[0];
+    // 画像表示する要素を格納
+    let preview = setElement(imageBox, textareafile)
+    if (preview === false) return false;
+    selectImage(preview, textareafile)
+    imageBox.style.display="block";
+  };
+
+
+
 window.onload = function(){
   // あそび編集ページ読み込み時
   let index = []
@@ -269,15 +328,15 @@ window.onload = function(){
     };
   };
 
-  if(document.URL.match(/recreations\/\d{1,}\/edit/)) {
+  if(document.URL.match(/recreations\/\d{1,}\/edit/) || document.URL.match(/recreations\/new/)) {
     let fileBox = document.getElementsByClassName('textareaFilebox');
     let deletebtn = document.getElementsByClassName('textareaImgDel');
     let groupbtn = document.getElementsByClassName('js-file_group--btn');
 
+    // ボタンにイベントをセット
     for( let i = 0; i < fileBox.length; i++ ) {
       fileBox[i].addEventListener('change', textareaImageView, false);
     };
-  
     for( let i = 0; i < deletebtn.length; i++ ) {
       deletebtn[i].addEventListener('click', textareaImgHidden, false);
     };
@@ -301,7 +360,6 @@ window.onload = function(){
       };
     } else {
       fileIndex.splice(0, 0, 1, 2, 3, 4);
-      groupbtn[0].appendChild(removeBtn(group[0].id));
       groupbtn[0].appendChild(addBtn());
     };
   };
