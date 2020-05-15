@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_132925) do
+ActiveRecord::Schema.define(version: 2020_04_13_091232) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -24,18 +24,11 @@ ActiveRecord::Schema.define(version: 2020_05_03_132925) do
 
   create_table "explanations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "recText", null: false
+    t.string "imgurl"
     t.bigint "recreation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recreation_id"], name: "index_explanations_on_recreation_id"
-  end
-
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "imgurl"
-    t.bigint "explanation_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["explanation_id"], name: "index_images_on_explanation_id"
   end
 
   create_table "recreations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -70,6 +63,5 @@ ActiveRecord::Schema.define(version: 2020_05_03_132925) do
   add_foreign_key "bookmarks", "recreations"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "explanations", "recreations"
-  add_foreign_key "images", "explanations"
   add_foreign_key "recreations", "users"
 end

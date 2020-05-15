@@ -124,11 +124,11 @@ Vue.jsにjson形式で渡すことで、非同期でのデータ表示を行う�
 |Column|Type|Options|
 |------|----|-------|
 |recText|text|null: false|
+|imgurl|string|--|
 |recreation_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :recreation
-- belongs_to :image
 
 # bookmarksテーブル
 |Column|Type|Options|
@@ -139,13 +139,3 @@ Vue.jsにjson形式で渡すことで、非同期でのデータ表示を行う�
 ### Association
 - belongs_to :user
 - belongs_to :recreation
-
-
-# imagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|imgurl|text|null: false|
-|explanation_id|integer|null: false, foreign_key: true|
-
-### Association
-- belongs_to :explanation

@@ -8,13 +8,11 @@ class RecreationsController < ApplicationController
   def new
     @recreation = Recreation.new
     explanation = @recreation.explanations.build
-    explanation.build_image
 
   end
 
   def create
     # 親要素を保存かけてあげることで自動で子要素も保存される！
-    binding.pry
     recreation = Recreation.new(rec_params)
     recreation.recimageType = imageType(recreation)
     recreation.save
@@ -26,11 +24,13 @@ class RecreationsController < ApplicationController
   end
 
   def update
-    # if params.require(:recreation).permit(:recimage).nil?
-    # end
     @recreation = Recreation.find_by(id: params[:id])
     if @recreation.update(rec_params)
-      render :show
+      textareaItem_delete()
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render :update }
+      end
     else
       render :edit
     end
@@ -51,7 +51,7 @@ class RecreationsController < ApplicationController
   private 
   def rec_params
       # 子要素のstrong parameterを書くことで、自動で子要素に親要素のidもふられる。explanatinテーブルにあるrecreation_idに親要素のidがふられます。
-      params.require(:recreation).permit(:id, :recname, :recimage, :recComment, :requirednumber_id, :rectime_id, explanations_attributes: [:id, :recText, :_destroy, image_attributes: [:id, :imgurl, :_destroy]]).merge(user_id: current_user.id)
+      params.require(:recreation).permit(:id, :recname, :recimage, :recComment, :requirednumber_id, :rectime_id, explanations_attributes: [ :id, :recText, :imgurl, :_destroy ]).merge(user_id: current_user.id)
   end
 
   def imageType(target)
@@ -59,6 +59,22 @@ class RecreationsController < ApplicationController
       return "画像"
     else
       return "動画"
+    end
+  end
+
+  def textareaItem_delete
+    delete_images = params[:delete_images].split(",")
+    delete_textarea = params[:delete_textarea].split(",")
+    # イメージ削除の処理
+    for delImg in delete_images do
+      unless delete_textarea.include?(delImg)
+        @recreation.explanations.find_by('id = ?', delImg).update(imgurl: nil)
+      end
+    end
+
+    # テキストエリアグループの削除(explanationsの削除)
+    for deltext in delete_textarea do
+      @recreation.explanations.find_by('id = ?', deltext).destroy
     end
   end
 
