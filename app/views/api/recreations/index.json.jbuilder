@@ -1,3 +1,7 @@
+json.set! :user do
+  json.id current_user.id
+end
+
 json.set! :recreations do
   json.array! @recreations do |rec|
     json.id rec.id
