@@ -72,9 +72,9 @@ $(function() {
       $('#main').css('display', 'block');
   });
     
-  //10秒たったら強制的にロード画面を非表示
+  //20秒たったら強制的にロード画面を非表示
   $(function(){
-    setTimeout('stopload()',10000);
+    setTimeout('stopload()',20000);
   });
     
   function stopload(){
