@@ -14,7 +14,10 @@ html, body{
   overflow: scroll;
 }
 
-.hedder {
+#main {
+  padding-bottom: 30px;
+}
+#hedder {
   padding: 0 20px;
   height: $hedder-height;
   pointer-events: none;
@@ -28,7 +31,7 @@ html, body{
     padding: 10px 0;
     pointer-events: auto;
   }
-  &__item {
+  & .hedder__item {
     pointer-events: auto;
     padding: 10px 0;
     &--icons {

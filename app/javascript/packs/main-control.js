@@ -33,8 +33,8 @@
 
 import Vue from 'vue/dist/vue.esm'
 import VueRouter from 'vue-router'
-import App from '../app.vue'
 import Footer from '../footer.vue'
+import Hedder from '../hedder.vue'
 import Router from "./router";
 import UserShow from '../userShow.vue'
 import axios from "axios"; 
@@ -47,11 +47,11 @@ Vue.config.productionTip = false
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
-    el:"#app",
+    el:"#main",
     router:Router,
     components: {
-      'footer-item': Footer,
-      'user-show': UserShow,
+      'hedderitem': Hedder,
+      // 'user-show': UserShow,
     }
     // render: h => h(app)
   });
