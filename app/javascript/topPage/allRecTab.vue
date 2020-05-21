@@ -142,6 +142,7 @@ export default {
   justify-content: center;
   margin-right: auto;
   flex-wrap: wrap;
+  padding: 0 20px;
 }
 /* レスポンシブ（最終行のみ左寄せ） */
 .allRecShow__contents:before {

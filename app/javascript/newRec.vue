@@ -68,6 +68,7 @@ export default {
     return {
       recreations: [],
       populars: [],
+      userId: 0,
       imgType: [],
       pages: [true,false],
       componentTypes: ["newTab", "popuTab"],
@@ -91,6 +92,8 @@ export default {
     fetchRecreations() {
       axios.get("/api/recreations").then(
         res => {
+          this.userId = res.data.user.id
+
           for (var i = 0; i < res.data.recreations.length; i++) {
             this.recreations.push(res.data.recreations[i]);
           }
