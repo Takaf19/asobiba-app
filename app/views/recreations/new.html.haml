@@ -5,31 +5,3 @@
       = icon("fas","pencil-alt")
     = form_with(model:@recreation, local: true) do |form|
       = render partial: 'recreations/recForm', locals: { form: form }
-
-      -# .field#textForm
-      -#   .field--label
-      -#     = form.label :rectime_id, 'あそび方説明', class:"reclabel"
-      -#     %span.require  必須
-      -#     %p 最大５つまで追加可能です。
-      -#   = form.fields_for :explanations do |text_form|
-      -#     .js-file_group{id: "#{text_form.index}"}
-      -#       .textarea-imageBox
-      -#         .message
-      -#           = icon('fas', 'sad-tear')
-      -#           %p No Image.
-      -#         %img.text-imagePreview{style:"display:none"}
-      -#         %video.text-imagePreview{contorols: true, autobuffer: true, style:"display:none"}
-      -#       = text_form.text_area :recText, class: 'textareabox', placeholder:"200文字まで", required: true, MaxLength: 200
-      -#       .js-file_group--btn
-      -#         .recbtn#js-add{onclick:"btnClick()"}+
-
-      -#       .image-add
-      -#         .textareaImageBtn
-      -#           .textareaImgAdd.textareaImageBtn--item
-      -#             = text_form.label :imgurl do
-      -#               %p 画像追加
-      -#               = text_form.file_field :imgurl, class:"filebox", onchange: "textareaImageView()", accept:".png,.jpg,.jpeg"
-
-      = form.submit "登録する", class:"submit recFormBtn"
-      %br
-      .back.recFormBtn{onclick:"backBtnClick()"}戻る

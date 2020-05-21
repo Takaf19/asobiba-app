@@ -99,7 +99,9 @@
     font-weight: bold;
     cursor: pointer;
     font-size: 0.9em;
+    text-align: center;
     line-height: 50px;
+    text-decoration: none;
   }
   & .submit{
     background-color: cadetblue;
@@ -109,7 +111,6 @@
   }
   & .back{
     background-color: gray;
-    text-decoration: none;
   }
 }
 

@@ -86,3 +86,7 @@
 
       = text_form.text_area :recText, class: 'textareabox', placeholder:"200文字まで", required: true, MaxLength: 200
       .js-file_group--btn
+
+= form.submit "登録する", class:"submit recFormBtn"
+%br
+.back.recFormBtn{onclick:"backBtnClick()"}戻る
