@@ -58,13 +58,27 @@ $(function() {
 });
 // if(document.URL.match("recreations/new")){
 
-// }
-// function scrollRecTab() {
-//   let element = event.target.parentNode; // 移動させたい位置の要素を取得
-//   // let rect = element.getBoundingClientRect();
-//   // let position = rect.top;    // 一番上からの位置を取得
-//   element.scrollIntoView({
-//     behavior: "smooth", 
-//     block: "center" 
-//   });
-// };
+// ローディング処理
+  $(function() {
+    var h = $(window).height();
+    $('#main').css('display','none');
+    $('#loader-bg ,#loader').height(h).css('display','block');
+  });
+    
+  $(window).load(function () { //全ての読み込みが完了したら実行
+    debugger
+      $('#loader-bg').delay(300).fadeOut(200);
+      $('#loader').delay(400).fadeOut(200);
+      $('#main').css('display', 'block');
+  });
+    
+  //10秒たったら強制的にロード画面を非表示
+  $(function(){
+    setTimeout('stopload()',10000);
+  });
+    
+  function stopload(){
+    $('#main').css('display','block');
+    $('#loader-bg').delay(600).fadeOut(500);
+    $('#loader').delay(400).fadeOut(200);
+  }
