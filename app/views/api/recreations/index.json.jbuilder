@@ -1,5 +1,9 @@
 json.set! :user do
-  json.id current_user.id
+  if user_signed_in?
+    json.id current_user.id
+  else
+    json.id 0
+  end
 end
 
 json.set! :recreations do
