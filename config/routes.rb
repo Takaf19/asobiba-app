@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # 呼び出し元のページを見にいくよう設定することでルーティングエラーを回避
   get 'recreations/allNewRecreasions', to: 'recreations#index'
+  get '/users/:id', to: 'recreations#index'
 
   resources :users, only: :show do
     resources :recreations, only: [ :new ]
