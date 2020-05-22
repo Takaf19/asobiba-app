@@ -7,7 +7,6 @@
           <video
             :src="rec.recimage.url"
             autobuffer
-            controls
             class="item--preview"
             v-if="setImageType(rec.recimageType)"
           />
