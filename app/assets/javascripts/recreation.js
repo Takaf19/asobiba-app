@@ -66,7 +66,6 @@ $(function() {
   });
     
   $(window).load(function () { //全ての読み込みが完了したら実行
-    debugger
       $('#loader-bg').delay(300).fadeOut(200);
       $('#loader').delay(400).fadeOut(200);
       $('#main').css('display', 'block');

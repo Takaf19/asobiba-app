@@ -336,6 +336,11 @@ export default {
   font-size: 1rem;
 }
 
+.item--preview {
+  height: 100%;
+  width: 100%;
+}
+
 .contents__textbox {
   background-color: rgba(252, 252, 253, 0.5);
   height: 100%;
